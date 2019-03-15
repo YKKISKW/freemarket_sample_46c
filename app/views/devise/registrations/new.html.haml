@@ -1,21 +1,72 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.ur-content
+  %header.ur-header
+    %h1.ur-header__icon
+      %a.ur-header__icon--link{href:"#"}
+        %img.ur-header__icon--link-img{src:"//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2405105395",alt:"mercari"}
+    %nav.ur-hd-nav
+      %ol.ur-hd-nav__ol
+        %li.ur-hd-nav__list.ur-hd-nav__list--active 会員情報
+        %li.ur-hd-nav__list 電話番号認証
+        %li.ur-hd-nav__list お届け先住所入力
+        %li.ur-hd-nav__list 支払い方法
+        %li.ur-hd-nav__list 完了
+  %main.ur-main
+    %section.ur-section
+      %h2.ur-m-header 会員情報入力
+      .ur-form
+        .ur-form-content
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            .ur-form-group
+              = f.label :ニックネーム , class: "ur-form-group__label"
+              %span.ur-form-group__span 必須
+              = f.text_field :nickname, autofocus: true, autocomplete: "nickname" ,placeholder:"例) メルカリ太郎", class: "ur-form-group__field"
+            .ur-form-group
+              = f.label :メールアドレス , class: "ur-form-group__label"
+              %span.ur-form-group__span 必須
+              = f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder:"PC・携帯どちらでも可", class: "ur-form-group__field"
+            .ur-form-group
+              = f.label :パスワード, class: "ur-form-group__label"
+              %span.ur-form-group__span 必須
+              - if @minimum_password_length
+                / %em
+                /   (#{@minimum_password_length} characters minimum)
+              = f.password_field :password, autocomplete: "new-password",placeholder:"6文字以上",class: "ur-form-group__field"
+            .ur-form-group
+              = f.label :"パスワード (確認)",class: "ur-form-group__label"
+              %span.ur-form-group__span 必須
+              = f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"6文字以上",class: "ur-form-group__field"
+            .ur-form-group
+              %h3.ur-form-group__confirm 本人確認
+              %p.ur-form-group__text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+            .ur-form-group
+              = f.label :"姓 (全角)" , class: "ur-form-group__label"
+              %span.ur-form-group__span 必須
+              = f.text_field :last_name, autofocus: true, autocomplete: "last_name" ,placeholder:"例) 山田", class: "ur-form-group__field"
+            .ur-form-group
+              = f.label :"名 (全角)" , class: "ur-form-group__label"
+              %span.ur-form-group__span 必須
+              = f.text_field :first_name, autofocus: true, autocomplete: "first_name" ,placeholder:"例) 彩", class: "ur-form-group__field"
+            .ur-form-group
+              = f.label :"姓カナ (全角)" , class: "ur-form-group__label"
+              %span.ur-form-group__span 必須
+              = f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" ,placeholder:"例) ヤマダ", class: "ur-form-group__field"
+            .ur-form-group
+              = f.label :"名カナ (全角)" , class: "ur-form-group__label"
+              %span.ur-form-group__span 必須
+              = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" ,placeholder:"例) アヤ", class: "ur-form-group__field"
+            .ur-form-group
+              = f.label :"生年月日" , class: "ur-form-group__label"
+              %span.ur-form-group__span 必須
+              .ur-form-group-birthday
+                .ur-form-group-birthday__wrap
+                  = date_select :birthday, '', {order: [ :year, :month, :day ],use_month_numbers: true,start_year: 1900,include_blank:true,end_year:Time.now.year,datetime_separator: '%s'}, {class: "  ur-form-group-birthday__wrap--select"}
+            %p.ur-form-group__text.ur-form-group-info-text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+            .ur-form-group
+              %p.ur-form-group__text.ur-form-group__center 次へ進むのボタンを押すことにより、利用規約に同意したものとみなします
+
+            .ur-form__btn
+              = f.submit "次へ進む",class: "ur-form__btn--submit ur-form__btn--default ur-form__btn--red"
+          / = render "devise/shared/links"
+
+= render "devise/shared/login-footer"

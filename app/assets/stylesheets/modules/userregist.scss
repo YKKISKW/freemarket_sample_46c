@@ -1,0 +1,180 @@
+@import "./mixin/login-default";
+.ur-content{
+  @include login-default();
+  .ur-header{
+    height: 128px;
+    text-align: center;
+    &__icon{
+      margin: 40px 0 0;
+      display: inline-block;
+      &--link{
+        width: 185px;
+        height: 49px;
+        line-height: 49px;
+        display: inline-block;
+        margin: 0 8px 0 0;
+        &-img{
+          width: 185px;
+          height: 49px;
+          vertical-align: middle;
+        }
+      }
+    }
+    .ur-hd-nav{
+      padding: 40px 0 0 44px;
+      border: 0;
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+      &__ol{
+        margin: 0;
+        list-style: none;
+        }
+      &__list{
+        margin: 0 40px 0 0;
+        color: #888;
+        min-width: 60px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        min-width: 40px;
+        font-size: 12px;
+        &--active{
+          color:#ea352d;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .ur-main{
+    display: block;
+    .ur-section{
+      width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      display: block;
+      .ur-m-header{
+        padding: 32px 16px;
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: center;
+        font-weight: bold;
+      }
+      .ur-form{
+        padding: 64px;
+        border-top: 1px solid #f5f5f5;
+        display: block;
+        &-content{
+          max-width: 320px;
+          margin: 0 auto;
+          .ur-form-group:first-of-type{
+              margin:0;
+        }
+          .ur-form-group{
+            margin: 40px 0 0;
+            display: block;
+            &__label{
+              font-weight: 600;
+              display: inline-block;
+            }
+            &__span{
+              background: #ea352d;
+              margin: 0 0 0 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+              vertical-align: top;
+            }
+            &__field{
+              width: 100%;
+              margin: 8px 0 0;
+              eight: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+            &__confirm{
+              font-size: 16px;
+              font-weight: bold;
+            }
+            &__text{
+              margin: 8px 0 0;
+              padding: 0;
+              line-height: 1.5;
+              font-size: 14px;
+            }
+            &-info-text{
+          color: #888;
+        }
+            &__center{
+              text-align: center;
+              font-size: 16px;
+            }
+            &-birthday{
+              width: 140px;
+              display: block;
+              margin: 8px 0 0;
+              position: relative;
+              background: #fff;
+              &__wrap{
+                width: 140px;
+                display: inline-block;
+                margin: 8px 0 0;
+                position: relative;
+                background: #fff;
+              &--select{
+                  width: 100%;
+                  position: relative;
+                  z-index: 2;
+                  height: 48px;
+                  padding: 0 16px;
+                  margin-bottom: 10px;
+                  border-radius: 4px;
+                  border: 1px solid #ccc;
+                  background: 0;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  cursor: pointer;
+              }
+              }
+            }
+        }
+        .ur-form__btn{
+          &--submit{
+            margin: 24px 0 0;
+          }
+          &--default{
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            border: 1px solid transparent;
+            -webkit-transition: all ease-out .3s;
+            transition: all ease-out .3s;
+            cursor: pointer;
+            text-align: center;
+          }
+          &--red{
+            background: #ea352d;
+            border: 1px solid #ea352d;
+            color: #fff;
+          }
+        }
+        &__passwordforget{
+          display: block;
+          margin: 40px 0 0;
+          color: #0099e8;
+          text-decoration: none;
+          }
+        }
+      }
+        &__btn{
+
+        }
+      }
+    }
+  }

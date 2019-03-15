@@ -1,0 +1,23 @@
+@import "./mixin/login-default";
+.login-share-header{
+  @include login-default();
+  .ul-header{
+    height: 128px;
+    text-align: center;
+    &__logo{
+      margin: 40px 0 0;
+      display: inline-block;
+      &--link{
+        width: 185px;
+        height: 49px;
+        line-height: 49px;
+        display: inline-block;
+        margin: 0 8px 0 0;
+      }
+      &--img{
+        width: 185px;
+        height: 49px;
+      }
+    }
+  }
+}
