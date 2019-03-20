@@ -1,0 +1,44 @@
+.um-content
+  .um-content-user
+    .um-content-user__header
+      .um-content-user__header__icons
+        = link_to ''
+        .um-none
+          =image_tag("member_photo_noimage_thumb.png")
+        %p.um-user-name
+          = link_to 'user-name'
+          .um-under-content
+            %span.um-counter-label 評価
+            %span.um-counter 0
+          .um-under-content
+            %span.um-counter-label 出品数
+            %span.um-counter 0
+    .um-content-user__tabs
+      %input#tab-info{type: "radio",name: "tab_btn1",checked: true}
+      %label.tab_btn1{for: "tab-info"}お知らせ
+      %input#tab-todo{type: "radio",name: "tab_btn1"}
+      %label.tab_btn1{for: "tab-todo"}やることリスト
+      .tab_pages#info-contents
+        .none-content
+          %p 現在、お知らせはありません
+      .tab_pages#todo-contents
+        .none-content
+          %p 現在、やることリストはありません
+
+  .content-buy-items
+    .content-buy-items__header
+      %p 購入した商品
+    .content-buy-items__tabs
+      %input#tab-transaction{type: "radio",name: "tab_btn2",checked: true}
+      %label.tab_btn2{for: "tab-transaction"}取引中
+      %input#tab-past-transaction{type: "radio",name: "tab_btn2"}
+      %label.tab_btn2{for: "tab-past-transaction"}過去の取引
+      .tab_pages#transaction-contents
+        %ul.mypage-item-list
+          .none-content{style: "background-image: url(#{image_path 'logo-gray-icon.png'})"}
+            %p 取引中の商品がありません
+      .tab_pages#past-transaction-contents
+        %ul.mypage-item-list
+          .none-content{style: "background-image: url(#{image_path 'logo-gray-icon.png'})"}
+            %p 過去に取引した商品がありません
+

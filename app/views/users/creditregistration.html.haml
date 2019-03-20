@@ -1,0 +1,74 @@
+= render 'users/top-header'
+
+.credit-right-content
+  .credit-right-content__wrapper
+    %h2.credit-title クレジットカード情報入力
+  .credit-right-content__wrapper__box
+    = form_with url: root_path,local: true , class: "credit-right-content__wrapper__box__form"do |f|
+      .credit-right-content__wrapper__box__form__center
+        .credit-right-content__wrapper__box__form__center__number
+          .h4.number-title カード番号
+          %span.form-require 必須
+        = f.text_field :keyword, class: 'number-form', placeholder: '半角数字のみ'
+
+        %ul.card-all
+          %li
+            = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?4136293187",class: "visa")
+          %li
+            = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?4136293187",class: "master")
+          %li
+            = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?4136293187",class: "saison")
+          %li
+            = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?4136293187",class: "jcb")
+          %li
+            = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?4136293187",class: "american")
+          %li
+            = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?4136293187",class: "dinners")
+          %li
+            = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?4136293187",class: "discover")
+
+        .credit-right-content__wrapper__box__form__center__expiration-month
+          .h4.expiration-title 有効期限
+          %span.form-require 必須
+        %select.form-month
+          %option 01
+          %option 02
+          %option 03
+          %option 04
+          %option 05
+          %option 06
+          %option 07
+          %option 08
+          %option 09
+          %option 10
+          %option 11
+          %option 12
+        %span 月
+
+        .credit-right-content__wrapper__box__form__center__expiration-year
+        %select.form-month
+          %option 19
+          %option 20
+          %option 21
+          %option 22
+          %option 23
+          %option 24
+          %option 25
+          %option 26
+          %option 27
+          %option 28
+          %option 29
+        %span 年
+
+        .credit-right-content__wrapper__box__form__security
+          .credit-right-content__wrapper__box__form__center__number
+            .h4.number-title セキュリティコード
+            %span.form-require 必須
+          = f.text_field :keyword, class: 'number-form', placeholder: 'カード背面4桁もしくは3桁の番号'
+        .credit-right-content__wrapper__box__form__caution
+          %span.question ?
+          .credit-question-number カード裏面の番号とは？
+        %button.submit-button 追加する
+
+= render 'users/camera-btn'
+= render 'users/top-footer'

@@ -1,0 +1,22 @@
+.camera-sell-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: block;
+  border-radius: 50%;
+  height: 160px;
+  width: 160px;
+  background-color: #ea352d;
+  font: 22px sans-serif;
+  color: #fff;
+  text-align: center;
+  z-index: 1000;
+  .camera {
+    padding-top: 28px;
+  }
+  .fa {
+    font-size: 2.6em;
+    padding-top: 3px;
+  }
+}
+

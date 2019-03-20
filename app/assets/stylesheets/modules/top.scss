@@ -1,3 +1,181 @@
+.top-contents {
+  height: auto;
+  width: 100vw;
+  background-color:#f5f5f5;
+  .top-banner {
+    height: 390px;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      &__slides {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 390px;
+        background: url(https://www.mercari.com/jp/assets/img/common/jp/top/main_bg_pc.jpg);
+        background-size: cover;
+        div {
+          max-width: 860px;
+          position: relative;
+          height: 390px;
+          margin: 0 auto;
+        }
+          &--inner-left {
+            position: absolute;
+            top: 50px;
+            left: -200px;
+            height: 298px;
+            width: 480px;
+              h2 {
+                font-size: 60px;
+                line-height: 1.2;
+                font-weight: bold;
+                color: #333;
+              }
+              p {
+                font-size: 18px;
+                margin: 16px 0 0;
+                line-height: 1.77778;
+                color: #333;
+                      }
+            .top-logo {
+              margin: 24px 0 0;
+              line-height: 0;
+              height: 50px;
+              a {
+                width: 170px;
+                height: 50px;
+                display: inline-block;
+                margin: 0 0 0 8px;
+              }
+                img {
+                  width: 100%;
+                  vertical-align: bottom;
+                    }
+                  }
+                }
+              }
+            .iphone-picture {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: auto;
+              }
+            }
+
+  .banner-advertisement {
+    width: 100%;
+    display: block;
+    height: 390px;
+    background: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-bokurano-heisei.jpg);
+  }
+  .banner-newlife {
+    width: 100%;
+    display: block;
+    height: 390px;
+    background: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-new-life.jpg);
+  }
+
+  .slide-dots {
+  margin: -30px auto ;
+  text-align: center;
+  position: relative;
+    li {
+      display: inline-block;
+      margin: 0 15px 0 0;
+        button {
+          position: relative;
+          text-indent: -9999px;
+          cursor: pointer;
+          border-radius: 50%;
+          display: inline-block;
+          padding: 0;
+          height: 12px;
+          width: 12px;
+          overflow: hidden;
+          border: none;
+          background-color: #fff;
+          opacity: .4;
+          pointer-events: none;
+          outline: 0;
+        }
+    }
+    .slick-active {
+      button {
+        cursor: default;
+        opacity: 0.9;
+        background-color: rgba(0,0,0,0.5);
+          }
+        }
+      }
+    .prev-arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 45%;
+      left: 60px;
+      z-index: 1;
+    }
+    .next-arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 45%;
+      right: 60px;
+      z-index: 1;
+    }
+
+  .top-pickup-contents {
+    padding: 35px 0;
+    background-color: #f5f5f5;
+    .pickup-head {
+      font-size: 28px;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+  .items-box-container{
+
+    &__title{
+      font-size: 22px;
+      text-align: center;
+      width: 100%;
+      margin: 16px 11px;
+      &__topic {
+      color: #0099e8;
+      font-weight: bold;
+      }
+      &__topic:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+  .items-box-content {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 10px;
+    height:320px;
+    .items-box {
+      margin: 0 0 0 20px;
+      width: 220px;
+      display: block;
+      float: left;
+    }
+  }
+  .view-all{
+    width: 930px;
+    margin: 0 auto;
+    text-align: right;
+    padding: 20px 0 30px 0;
+    .all-items {
+      color: #0099e8;
+      font-size: 14px;
+    }
+    .all-items:hover {
+      text-decoration: underline;
+    }
+  }
+}
 
 
 

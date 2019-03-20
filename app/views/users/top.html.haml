@@ -1,7 +1,98 @@
 = render 'users/top-header'
+= render 'users/camera-btn'
+.top-contents
+  %section
+    .top-banner
+      .top-banner__slides
+        %div
+          .top-banner__slides--inner-left
+            %h2
+              スマホでかんたん
+              %br
+              フリマアプリ
+            %p
+              メルカリはスマホカメラからすぐに出品できる
+              %br
+              購入時も安心な独自システムのアプリです
+            .top-logo
+              = link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8" do
+                = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?4136293187"
+              = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja" do
+                = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?4136293187"
+          = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?4136293187",class: "iphone-picture"
+      .top-banner__slides--newlife
+        = link_to "",root_path,class: "top-banner banner-newlife"
+      .top-banner__slides--advertisement
+        = link_to "",root_path,class: "top-banner banner-advertisement"
 
-
-
-
+  %section.top-pickup-contents
+    %h2.pickup-head ピックアップカテゴリー
+    %section.items-box-container.clearfix
+      %h3.items-box-container__title
+        = link_to "レディース 新着アイテム", "/test/", class:"items-box-container__title__topic"
+      .items-box-content.clearfix
+        - 4.times do
+          = render 'users/item'
+      .view-all
+        = link_to "すべての商品を見る", "/test/", class:"all-items"
+    %section.items-box-container.clearfix
+      %h3.items-box-container__title
+        = link_to "メンズ 新着アイテム", "/test/", class:"items-box-container__title__topic"
+      .items-box-content.clearfix
+        - 4.times do
+          = render 'users/item'
+      .view-all
+        = link_to "すべての商品を見る", "/test/", class:"all-items"
+    %section.items-box-container.clearfix
+      %h3.items-box-container__title
+        = link_to "ベビー・キッズ 新着アイテム", "/test/", class:"items-box-container__title__topic"
+      .items-box-content.clearfix
+        - 4.times do
+          = render 'users/item'
+      .view-all
+        = link_to "すべての商品を見る", "/test/", class:"all-items"
+    %section.items-box-container.clearfix
+      %h3.items-box-container__title
+        = link_to "コスメ・香水・美容 新着アイテム", "/test/", class:"items-box-container__title__topic"
+      .items-box-content.clearfix
+        - 4.times do
+          = render 'users/item'
+      .view-all
+        = link_to "すべての商品を見る", "/test/", class:"all-items"
+    %h2.pickup-head ピックアップブランド
+    %section.items-box-container.clearfix
+      %h3.items-box-container__title
+        = link_to "シャネル 新着アイテム", "/test/", class:"items-box-container__title__topic"
+      .items-box-content.clearfix
+        - 4.times do
+          = render 'users/item'
+      .view-all
+        = link_to "すべての商品を見る", "/test/", class:"all-items"
+    %section.items-box-container.clearfix
+      %h3.items-box-container__title
+        = link_to "ルイ ヴィトン 新着アイテム", "/test/", class:"items-box-container__title__topic"
+      .items-box-content.clearfix
+        - 4.times do
+          = render 'users/item'
+      .view-all
+        = link_to "すべての商品を見る", "/test/", class:"all-items"
+    %section.items-box-container.clearfix
+      %h3.items-box-container__title
+        = link_to "シュプリーム 新着アイテム", "/test/", class:"items-box-container__title__topic"
+      .items-box-content.clearfix
+        - 4.times do
+          = render 'users/item'
+      .view-all
+        = link_to "すべての商品を見る", "/test/", class:"all-items"
+    %section.items-box-container.clearfix
+      %h3.items-box-container__title
+        = link_to "ナイキ 新着アイテム", "/test/", class:"items-box-container__title__topic"
+      .items-box-content.clearfix
+        - 4.times do
+          = render 'users/item'
+      .view-all
+        = link_to "すべての商品を見る", "/test/", class:"all-items"
 
 = render 'users/top-footer'
+
+

@@ -1,45 +1,50 @@
-%header.top-header
-  .top-header__inner
-    .top-header__inner__top
-      %h1.top-header__inner__top__logo
-        = link_to image_tag('mercari_logo.svg', alt: 'mercari', width: '134', height: '36'), root_path
-      %form.top-header-form{:action => "https://www.mercari.com/jp/search/"}
-        %input.top-header-form__input{:name => "keyword", :placeholder => "キーワードから探す", :type => "search", :value => ""}
-        %i.top-icon-search
-          = fa_icon("search")
+%header.top-main-header
+  .top-main-header__wrapper
+    .top-main-header__wrapper__top
+      .top-main-header__wrapper__top__left
+        %a{:href => root_path}
+          = image_tag("mercari_logo.svg", class: "mercari-image")
+      = form_with url: root_path,local: true ,html: {class: "top-main-header__wrapper__top__form"} do |f|
+        .top-main-header__wrapper__top__form__search-field.back-silver
+          = f.text_field :keyword, class: 'top-main-header__wrapper__top__form__search-field__text-field', placeholder: 'キーワードから探す'
+          = button_tag type: 'submit', class: 'top-main-header__wrapper__top__form__search-field__search-btn' do
+            %i.fa.fa-search
+    .top-main-header__wrapper__nav-box
+      .top-main-header__wrapper__nav-box__left
+        %ul.category
+          %li.category__list
+            = link_to "カテゴリーから探す",root_path,class:"category-black"
 
-    .top-nav.clearfix
-      %nav.top-nav__left
-        %ul.top-nav__left__nav
-          %li.top-nav__left__nav__list
-            %h2.top-nav__left__nav__list__select
-              %a.top-nav__left__nav__list__select__root{:href => "https://www.mercari.com/jp/category/"} カテゴリーから探す
-          %li.top-nav__left__nav__list2
-            %h2.top-nav__left__nav__list2__select
-              %a.top-nav__left__nav__list2__select__root{:href => "https://www.mercari.com/jp/brand/"} ブランドから探す
+          %li.category__list
+            = link_to "ブランドから探す",root_path,class:"category-black"
 
-      %nav.top-right
-        %ul.top-right__nav
-          %li.top-right__nav__list1
-            = link_to '/testpage' do
-              = image_tag("sample.jpg",class: "top-right__nav__list1__icon",width: '32',height: '32')
-              .top-mypage マイページ
+      .top-main-header__wrapper__nav-box__right
+        %ul.right
+          - if user_signed_in?
 
-          %li.top-right__nav__list2
-            = link_to '/testpage' do
-              %i.top-right__nav__list2__bell
-                = fa_icon("bell")
-              %span.top-bell お知らせ
-
-          %li.top-right__nav__list3
-            = link_to '/testpage' do
-              %i.top-right__nav__list3__check
-                = fa_icon("check")
-                %span.top-check やることリスト
+            %li
+              = link_to 'mypage' do
+                = image_tag("sample.jpg", class: "avater-image")
+                %span マイページ
+              %ul.mypage-box
+                .profile-area
+                  .profile-area__avatar
+                    = image_tag("sample.jpg")
+            %li.bell-color
+              = link_to root_path do
+                %i.fa.fa-bell
+                %span お知らせ
+            %li
+              = link_to root_path do
+                %i.fa.fa.fa-check
+                %span やることリスト
+          - else
             %li
               = link_to "ログイン", new_user_session_path, class: "login-link"
             %li
               = link_to "新規会員登録", new_user_registration_path, class: "registration-link"
+
+
 
 
 
