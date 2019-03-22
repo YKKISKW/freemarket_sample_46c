@@ -105,7 +105,6 @@
 
 ### Association
 - has_many :images, depend::destory
-- has_many :categories
 - has_many :category_items
 - has_many :sizes
 - has_many :likes, depend::destory
@@ -119,6 +118,7 @@
 - belongs_to :profit
 - belongs_to :delivery_fee
 - belongs_to :user
+- belongs_to :category
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -165,9 +165,9 @@
 |parent_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :categories
 - has_many :category_items
 - belongs_to :size
+- belongs_to :item
 - belongs_to :parent, class_name: :Category
 - has_many :children, class_name: :Category, foreign_key: :parent_id
 
