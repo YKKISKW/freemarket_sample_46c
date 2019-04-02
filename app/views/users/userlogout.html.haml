@@ -6,6 +6,7 @@
     = render 'devise/shared/side_bar'
     .uo-right
       .uo-logout
-        %input{type:'submit', class: 'uo-btn', value: 'ログアウト'}
+        = button_to destroy_user_session_path,class: 'uo-btn',method: :delete do
+          ログアウト
 = render 'users/camera-btn'
 = render 'users/top-footer'

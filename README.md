@@ -17,8 +17,8 @@
 - has_many :orders
 - has_many :reviews
 - has_many :order_comments
-- has_many :credits, dependent::destory
-- has_one :sns_credentials
+- has_one :credit, dependent::destory
+- has_many :sns_credentials
 - has_many :social_profiles
 
 
@@ -102,6 +102,8 @@
 |avatar|string| |
 |user_id|integer|null: false, foreign_key: true|
 |size|integer||
+|item_status|string|null: false|
+
 
 ### Association
 - has_many :images, dependent::destory
@@ -156,7 +158,6 @@
 |------|----|-------|
 |item_id|integer|null: false , foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
-|order_status|string|null: false|
 
 ### Association
 - belongs_to :item
@@ -188,13 +189,12 @@
 - belongs_to :order
 
 
-## creditsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|number|integer|null: false,unique:true |
-|exiration_date_month|integer|null: false|
-|exiration_date_year|integer|null: false|
-|security_code_name|integer|null: false|
+## creditテーブル
+| Column      | Type    | Options                        |
+|-------------|---------|--------------------------------|
+| user_id     | integer | null: false, foreign_key: true |
+| customer_id | string  | null: false,                   |
+| card_id     | string  |                                |
 
 ### Association
 - belongs_to :user

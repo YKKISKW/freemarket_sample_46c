@@ -4,6 +4,17 @@
   display: block;
   clear: both;
 }
+
+.is-error-message{
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 14px;
+  &__li{
+    margin: 8px 0 0;
+  }
+}
+
+
 .is-left{
     float: left;
   }
@@ -83,6 +94,55 @@
           display: block;
           width: 620px;
           margin: 16px auto 0;
+          .is-add-image{
+            display: inline;
+            .is-image-ul{
+              display: inline;
+              float: left;
+              .is-image-li:first-of-type{
+                margin-left: 0;
+              }
+              .is-image-li:nth-of-type(6){
+                margin-left: 0;
+              }
+              .is-image-li{
+                margin-left: 0;
+                width: 116px;
+                margin: 0 0 10px 7px;
+                position: relative;
+                display: inline-block;
+                border: 1px solid #eee;
+                vertical-align: top;
+                img{
+                   width: 100%;
+                  height: auto;
+                }
+                &__figure{
+                  line-height: 116px;
+                  width: auto;
+                  padding: 0;
+                  height: 116px;
+                  position: relative;
+                  overflow: hidden;
+                  background: #f5f5f5;
+                  margin: 0;
+                }
+                &__under{
+                  font-size: 14px;
+                  display: flex;
+                  &--e{
+                    display: inline-block;
+                    width: 50%;
+                    background: #f5f5f5;
+                    line-height: 44px;
+                    text-align: center;
+                    color: #0099e8;
+                    text-decoration: none;
+                  }
+                }
+               }
+              }
+            }
           &__box{
             width: 100%;
              margin-left: 0;
@@ -114,6 +174,27 @@
             word-wrap: break-word;
             }
           }
+            .is-item-1{
+              width: 470px;
+              margin-left: 2%;
+            }
+            .is-item-2{
+              width: 350px;
+              margin-left: 2%;
+            }
+            .is-item-3{
+              width: 220px;
+              margin-left: 2%;
+            }
+            .is-item-4{
+              width: 90px;
+              margin-left: 2%;
+            }
+             .is-item-5{
+              width: 100%;
+              margin-left: 2%;
+            }
+        }
       }
     }
     .is-sell-content{
@@ -156,6 +237,13 @@
               padding: 24px 0;
               border-top: 1px solid #ccc;
               box-sizing:border-box;
+              &--small{
+                font-size: 14px;
+              }
+              &--large{
+                font-size: 34px;
+                font-weight: bold;
+              }
             }
             &__li:first-of-type{
                   padding: 0 0 24px;
@@ -170,6 +258,9 @@
             position: relative;
             background: #fff;
             }
+          &__hiden{
+            display: none;
+          }
           &__select{
             width: 100%;
             position: relative;
@@ -186,6 +277,10 @@
           &__label{
             font-weight: 600;
             display: inline-block;
+          }
+          &__label-hiden{
+            font-weight: 600;
+            display: none;
           }
           &__span{
             background: #ea352d;
@@ -229,4 +324,4 @@
     }
   }
 }
-}
+

@@ -1,0 +1,3 @@
+%li.pager-forward
+  = link_to (current_page.first? ? "#" :url), remote: remote do
+    = fa_icon 'angle-right', class: "icon-next"

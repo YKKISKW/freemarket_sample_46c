@@ -47,8 +47,14 @@ gem 'active_hash'
 gem 'enum_help'
 gem 'faker'
 gem 'rails-i18n', '~> 5.1'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'gretel'
 gem 'dotenv-rails'
+gem 'kaminari'
+gem 'ransack'
+gem 'fog-aws'
+gem 'payjp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -59,12 +65,10 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'pry-doc'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do

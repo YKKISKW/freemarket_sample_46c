@@ -4,7 +4,7 @@ $(function(){
         var $href = $(this).attr('href');
         if(location.href.match($href)) {
         $(this).addClass('active');
-        } else {
+        }else {
         $(this).removeClass('active');
         }
     });

@@ -14,6 +14,5 @@
             .us-sup__btn-sns-fb--icon
               = fa_icon("facebook-square 2x")
           = link_to "Googleで登録",user_google_omniauth_authorize_path,id: "us-sup__gg",class: "us-sup__btn-default us-sup__btn-sns us-sup__btn-sns-gg"
-      = link_to "ログアウト",destroy_user_session_path,method: :delete
 
 = render "devise/shared/login-footer"

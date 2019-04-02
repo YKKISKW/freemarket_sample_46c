@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def top
+
+    
   end
 
   def mypage
@@ -36,8 +38,6 @@ class UsersController < ApplicationController
   def itemsell
   end
 
-  def itemdetail
-  end
 
   def itemconfirm
   end

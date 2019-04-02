@@ -4,26 +4,58 @@
       .top-main-header__wrapper__top__left
         %a{:href => root_path}
           = image_tag("mercari_logo.svg", class: "mercari-image")
-      = form_with url: root_path,local: true ,html: {class: "top-main-header__wrapper__top__form"} do |f|
+      = form_with url: items_search_path, method: :get, local: true ,html: {class: "top-main-header__wrapper__top__form"} do |f|
         .top-main-header__wrapper__top__form__search-field.back-silver
-          = f.text_field :keyword, class: 'top-main-header__wrapper__top__form__search-field__text-field', placeholder: 'キーワードから探す'
+          = f.text_field :keyword, class: 'top-main-header__wrapper__top__form__search-field__text-field', placeholder: 'キーワードから探す', value:''
           = button_tag type: 'submit', class: 'top-main-header__wrapper__top__form__search-field__search-btn' do
             %i.fa.fa-search
     .top-main-header__wrapper__nav-box
       .top-main-header__wrapper__nav-box__left
         %ul.category
           %li.category__list
-            = link_to "カテゴリーから探す",root_path,class:"category-black"
+            = link_to "カテゴリーから探す",root_path,class:"category__list__text"
+            %ul.top-main-header-nav-parent-wrap
+              - @categories.each do |category|
+                %li.top-main-header-nav-parent{"data-category-id": category.id}
+                  %h3.category__text
+                    = link_to categories_path, class: "category_link" do
+                      = category.name                     
+                  %ul.top-main-header-nav-child-wrap
+                    - if category.middle_categories.present?
+                      - category.middle_categories.each do |middle_category|
+                        %li.top-main-header-nav-child{"data-middle-id": middle_category.id}
+                          = link_to root_path, class: "middle_category_link" do
+                            = middle_category.name
+                          %ul.top-main-header-nav-grand-child-wrap
+                            - if middle_category.lower_categories.present?
+                              - middle_category.lower_categories.each do |lower_category|
+                                %li.top-main-header-nav-grand-child{"data-lower-id": lower_category.id}
+                                  = link_to root_path, class: "lower_category_link" do
+                                    = lower_category.name
+                            - else
+                              %li.top-main-header-nav-grand-child
+                    - else
+                      %li.top-main-header-nav-child
 
-          %li.category__list
-            = link_to "ブランドから探す",root_path,class:"category-black"
+          %li.brand__list
+            = link_to "ブランドから探す",root_path,class:"brand__list__text"
+            %ul.top-main-header-nav-brand-wrap
+              - @brands.each do |brand|
+                %li.top-main-header-nav-brand{"data-brand-id": brand.id}
+                  %h3.brand__text
+                    = link_to brands_path, class: "brand_link" do
+                      = brand.name                
+
+              
+
+
 
       .top-main-header__wrapper__nav-box__right
         %ul.right
           - if user_signed_in?
 
             %li
-              = link_to 'mypage' do
+              = link_to mypage_path(current_user.id) do
                 = image_tag("sample.jpg", class: "avater-image")
                 %span マイページ
               %ul.mypage-box

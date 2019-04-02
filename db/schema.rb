@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_063528) do
+ActiveRecord::Schema.define(version: 2019_04_01_065638) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -22,6 +22,25 @@ ActiveRecord::Schema.define(version: 2019_03_23_063528) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credits_on_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -47,9 +66,33 @@ ActiveRecord::Schema.define(version: 2019_03_23_063528) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "size"
+    t.integer "item_status", default: 0, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id", "user_id"], name: "index_likes_on_item_id_and_user_id", unique: true
+    t.index ["user_id"], name: "fk_rails_1e09b5dabf"
+  end
+
+  create_table "lower_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "middle_category_id"
+  end
+
+  create_table "middle_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "category_id"
   end
 
   create_table "social_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -79,19 +122,24 @@ ActiveRecord::Schema.define(version: 2019_03_23_063528) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "birth_day", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "first_name_kana"
     t.string "last_name_kana"
     t.date "birthday"
+    t.string "nickname", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
+  add_foreign_key "credits", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
+  add_foreign_key "likes", "items"
+  add_foreign_key "likes", "users"
   add_foreign_key "social_profiles", "users"
 end

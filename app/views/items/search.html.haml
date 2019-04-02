@@ -1,0 +1,30 @@
+.search-default
+  = render 'users/top-header'
+  - breadcrumb :search
+  = render 'users/bread-crumbs'
+  .search-container
+    .search-container__left
+    .search-container__right
+      %section.item-box-container
+        %h2.search-result-head
+          - if @error
+            %h2
+              = "検索結果 0件"
+            %p
+              = @error
+            %h3 新着商品
+            .search-result
+              .search-result__items
+                = render 'search_items', locals: {items: @items}
+          - else
+            %h2
+              = "検索結果 1-#{@items.count}件"
+            .search-result
+              .search-result__items
+                = render 'search_items', locals: {items: @items}
+      .search-container__pager
+        = paginate(@items)
+
+  = render 'users/camera-btn'
+  = render 'users/top-footer'
+

@@ -1,0 +1,158 @@
+.is-wrapper
+  = render 'users/top-header'
+  = render 'users/bread-crumbs'
+
+
+
+  %section{ class: "#{@item.images.length < 5 ? 'is-item' : 'is-item is-many-photos' }"}
+    %h1.is-item__name #{@item.name}
+    .is-item__main.clearfix
+      .is-item__photos
+        .is-slider
+          - @item.images.each do |img|
+            .is-slider__item
+              = image_tag(img.image.url)
+        .is-thumbnails
+          - @item.images.each do |img|
+            .is-thumbnails__item
+              = image_tag(img.image.url)
+
+      %table.is-item__detail
+        %tr
+          %th 出品者
+          %td
+            = link_to "#" do
+              #{@item.user.nickname}
+            .is-item__detail__icons
+              .is-item__detail__icons--one
+                = fa_icon 'smile-o'
+                %span 0
+              .is-item__detail__icons--one
+                = fa_icon 'meh-o'
+                %span 0
+              .is-item__detail__icons--one
+                = fa_icon 'frown-o'
+                %span 999
+        %tr
+          %th カテゴリー
+          %td
+            %ul
+              %li
+                = link_to '#' do
+                  #{@item.category.name}
+              %li
+                = link_to '#' do
+                  = fa_icon 'angle-right'
+                  %span #{@item.brand.name}
+              %li
+                = link_to '#' do
+                  = fa_icon 'angle-right'
+                  %span #{@item.name}
+        %tr
+          %th ブランド
+          %td
+            = link_to '' do
+              #{@item.brand.name}
+        %tr
+          %th 商品の状態
+          %td #{@item.status_i18n}
+        %tr
+          %th 配送料の負担
+          %td #{@item.delivery_fee_i18n}
+        %tr
+          %th 配送の方法
+          %td #{@item.delivery_method_i18n}
+        %tr
+          %th 配送元地域
+          %td
+            = link_to '' do
+              #{@item.prefecture.name}
+        %tr
+          %th 発送日の目安
+          %td #{@item.delivery_date_i18n}
+
+    .is-item__price
+      %span.is-item__price--bold
+        = converting_to_jpy(@item.price)
+      %span.is-item__price--tax (税込)
+      %span.is-item__price--shipping-fee
+        = "#{@item.delivery_fee_i18n}".gsub(/\(.+\)/,"")
+    - if @item.user != current_user
+      = link_to "購入画面に進む", itemconfirm_path(@item), class: "is-item__buy-btn"
+
+    .is-item__description
+      %p.is-item__description--inner
+        #{@item.description}
+
+  - if @item.user == current_user
+    .is-item__change-box
+      = link_to '商品の編集', '#', class: 'btn red'
+      %p or
+      = button_to 'この商品を削除する', item_path(@item), method: :delete, class: 'is-change btn'
+
+
+    - if @item.user != current_user
+      .is-item__btns.clearfix
+        .is-item__btns--left
+          = render 'likes/like'
+          = link_to "#", class: "is-item__btns--left--report btn" do
+            = fa_icon "flag", class: "is-item__btns--left--report__icon"
+            %span.is-item__btns--left--report__text 不適切な商品の報告
+        .is-item__btns--right
+          = link_to "https://www.mercari.com/jp/safe/description/", class: "is-item__btns--right--safe" do
+            = fa_icon "lock", class: "is-item__btns--right--safe__icon"
+            %span.is-item__btns--right--safe__text あんしん・あんぜんへの取り組み
+
+
+
+  .is-item__comment-block
+    .is-item__comment__wrapper
+      -if @comments.present?
+        .is-item__comments
+          %ul.comments
+            = render partial: 'items/items_top/comment', collection: @comments
+      .is-item__comments
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = form_for [@item, @comment], html:{id: 'comment-form'} do |f|
+          = f.text_area :comment, class: 'is-item__comment-form__textarea', placeholder: 'コメントを書いてください'
+          = f.submit 'コメントする', class: 'is-item__comment-form__btn'
+
+      - if @item.user != current_user
+        %ul.is-item__navi.clearfix
+          %li.is-item__navi--prev
+            = link_to item_path(@prev_item), data: {"turbolinks"=>false}do
+              = fa_icon "angle-left"
+              = @prev_item.name
+          %li.is-item__navi--next
+            = link_to item_path(@next_item), data: {"turbolinks"=>false} do
+              = @next_item.name
+              = fa_icon "angle-right"
+
+        .is-item__social-media-box
+          .is-item__social-medias-text
+          %ul.is-item__social-medias
+            %li
+              = link_to '' do
+                = fa_icon 'facebook-square'
+            %li
+              = link_to '' do
+                = fa_icon 'twitter-square'
+            %li
+              = link_to '' do
+                = fa_icon 'pinterest-square'
+
+        .is-item__relation
+          - if @user_items.length != 0
+            %section.is-item__relation__box
+              %h2.is-item__ralation__box__title
+                = link_to "#{@item.user.nickname}さんのその他の出品", "#", class: "items-box-container__title__topic"
+              .is-item__relation__box__contents.clearfix
+                = render partial: 'items/items_top/item', collection: @user_items, as: "item"
+          - if @category_items.length != 0
+            %section.is-item__relation__box
+              %h2.is-item__ralation__box__title
+                = link_to "#{@item.category.name} その他の出品", "#", class: "items-box-container__title__topic"
+              .is-item__relation__box__contents.clearfix
+                = render partial: 'items/items_top/item', collection: @category_items, as: "item"
+
+  = render 'users/top-footer'

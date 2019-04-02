@@ -1,0 +1,10 @@
+- @items.each do |item|
+  = link_to itemdetail_path(item) do
+    = image_tag(item.images[0].image, {class: "search-result__image"}) if item.images[0]
+    = image_tag("item_noimage.jpg", {class: "search-result__image"}) if item.images[0].nil?
+    %h4.search-result__introduction
+      = item.name
+    %h4.search-result__price
+      ¥
+      = item.price
+    %p (税込)

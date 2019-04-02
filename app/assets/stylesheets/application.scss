@@ -1,9 +1,9 @@
 @import "./reset";
 @import "font-awesome";
 @import 'slick';
+@import "./comments";
 @import "modules/userlogin";
 @import "modules/usersignup";
-@import "font-awesome";
 @import "modules/mypage";
 @import "modules/_side_bar";
 @import "modules/_um-content";
@@ -18,9 +18,10 @@
 @import "modules/itemconfirm.scss";
 @import "modules/creditregistration";
 @import "modules/bread-crumbs";
-@import "modules/itemdetail";
+@import "modules/items_show";
 @import "modules/userconfirm";
 @import "modules/profile";
 @import "modules/itemsell";
 @import "modules/userlogout";
 @import "modules/credit.scss";
+@import "modules/search.scss";

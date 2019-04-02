@@ -1,0 +1,3 @@
+%li.pager-prev
+  = link_to (current_page.first? ? "#" : url), remote: remote do
+    = fa_icon 'angle-left', class: "icon-prev"

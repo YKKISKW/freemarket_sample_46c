@@ -1,75 +1,228 @@
-.top-main-header{
+.top-main-header {
   text-align: center;
   background-color: #FFF;
   height: 90px;
+
   &__wrapper {
     display: inline-block;
     padding: 8px 0 0 0;
     width: 1020px;
+
     &__top {
       display: flex;
-      flex-direction:row;
-      &__left {
-      }
+      flex-direction: row;
+
+      &__left {}
+
       .mercari-image {
         height: 36px;
         width: 134px;
       }
+
       &__form {
         margin: 2px 0 0 10px;
         width: 100%;
+
         &__search-field {
           display: flex;
-          flex-direction:row;
+          flex-direction: row;
           border-radius: 5px;
           border: 1px solid #ccc;
           height: 35px;
+
           &__text-field {
             outline: 0;
             border-style: none;
-            background-color: rgba(0,0,0,0);
+            background-color: rgba(0, 0, 0, 0);
             position: relative;
             left: 5px;
             width: 96%;
             font-size: 16px;
           }
+
           &__search-btn {
-            border:none;
+            border: none;
             background-color: transparent;
             font-size: 13px;
           }
         }
       }
     }
+
     &__nav-box {
-     padding: 2px 0 0 0;
-     line-height: 35px;
-     display: flex;
-     justify-content:space-between;
-      &__left{
+      padding: 2px 0 0 0;
+      line-height: 35px;
+      display: flex;
+      justify-content: space-between;
+
+      &__left {
         ul.category {
           list-style: none;
           display: flex;
           position: relative;
           padding-left: 0;
+
           li.category__list {
-            .category-black{
+
+            .category__list__text {
               color: black;
               font-size: 13px;
+              font-weight: bold;
             }
           }
-          li {
-            padding: 0 0 0 16px;
+
+          ul.top-main-header-nav-parent-wrap {
+            display: none;
+            width: 224px;
+            height: 600px;
+            position: absolute;
+            top: 30px;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+
+
+            li.top-main-header-nav-parent {
+              width: 224px;
+
+              h3.category__text {
+                font-size: 14px;
+                padding: 0 16px;
+                line-height: 44px;
+                color: black;
+
+                text-decoration: none;
+                line-height: 44px;
+
+                a.category__link {
+                  line-height: 44px;
+                  color: black;
+
+
+                }
+
+                a:visited {
+                  color: black;
+                }
+
+                a:hover {
+                  color: white;
+                }
+
+
+              }
+
+
+
+
+              ul.top-main-header-nav-child-wrap {
+                display: none;
+                width: 224px;
+                position: absolute;
+                top: 0;
+                left: 224px;
+                bottom: 0;
+                background-color: white;
+                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+
+                li.top-main-header-nav-child {
+                  width: 224px;
+                  z-index: 2000;
+
+                  a.middle_category_link {
+                    font-size: 12px;
+                    padding: 8px 16px;
+                    color: black;
+                    z-index: 3000;
+
+                  }
+
+                  ul.top-main-header-nav-grand-child-wrap {
+                    width: 320px;
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 224px;
+                    bottom: 0;
+                    background-color: white;
+                    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+
+                    li.top-main-header-nav-grand-child {
+                      width: 320px;
+
+                      a.lower_category_link {
+                        font-size: 12px;
+                        padding: 8px 16px;
+                        color: black;
+                      }
+                    }
+
+
+                  }
+                }
+
+              }
+            }
           }
+
+
+
+
+
+
+          li.brand__list {
+            padding-left: 30px;
+
+            .brand__list__text {
+              color: black;
+              font-size: 13px;
+              font-weight: bold;
+            }
+
+            ul.top-main-header-nav-brand-wrap {
+              display: none;
+              width: 224px;
+              height: 300px;
+              position: absolute;
+              top: 30px;
+              z-index: 1000;
+              background-color: white;
+              box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+              left: 130px;
+
+              a:visited {
+                color: black;
+              }
+
+              a:hover {
+                color: white;
+              }
+
+
+              h3.brand__text {
+                font-size: 14px;
+                padding: 0 16px;
+                line-height: 44px;
+
+
+              }
+
+            }
+
+          }
+
         }
       }
+
       &__right {
         ul.right {
           display: flex;
           flex-direction: row;
+
           li {
             padding: 0 0 0 16px;
             position: relative;
+
             ul.mypage-box {
               display: none;
               width: 320px;
@@ -78,35 +231,41 @@
               position: absolute;
               top: 35px;
             }
+
             i {
               display: inline-block;
               color: black;
             }
+
             span {
-              vertical-align:top;
+              vertical-align: top;
               font-size: 14px;
               color: black;
             }
+
             .avater-image {
               border-radius: 20px;
               vertical-align: top;
               width: 32px;
               height: 32px;
             }
+
             .login-link {
-             background-color:#ea352d;
-             color: white;
-             border-radius: 5px;
-             padding: 10px 15px;
-             font-size: 12px;
+              background-color: #ea352d;
+              color: white;
+              border-radius: 5px;
+              padding: 10px 15px;
+              font-size: 12px;
             }
+
             .registration-link {
-              border:solid 1px;
+              border: solid 1px;
               padding: 8px 10px;
               color: #0099e8;
               border-radius: 4px;
               font-size: 14px;
-              &:hover{
+
+              &:hover {
                 background-color: #0099e8;
                 color: white;
               }
@@ -125,5 +284,3 @@
   height: 160px;
   font-size: 22px;
 }
-
-

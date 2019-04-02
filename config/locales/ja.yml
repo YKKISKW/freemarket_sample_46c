@@ -1,7 +1,7 @@
 ja:
   enums:
-    items:
-      dmethod:
+    item:
+      delivery_method:
         undecided:            未定
         easy_mercari_mail:    らくらくメルカリ便
         yu_yu_mercari_mail:   ゆうゆうメルカリ便
@@ -20,11 +20,11 @@ ja:
         bad:                   やや傷や汚れあり
         so_bad:                傷や汚れあり
         very_bad:              全体的に状態悪い
-      ddate:
+      delivery_date:
         one_to_two:             1~2日で発送
         two_to_three:           2~3日で発送
         four_to_seven:          4~7日で発送
-      dfee:
+      delivery_fee:
         include:              送料込み(出品者負担)
         exclude:              着払い(購入者負担)
       size:

@@ -1,9 +1,19 @@
 class Item < ApplicationRecord
-  # belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :brand
+  belongs_to :user
+  belongs_to :prefecture
+  has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
   has_many :images, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
+  def like?(user)
+    like_users.include?(user)
+  end
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
   enum status: {
                   very_good: 0,
                   good:      1,
@@ -12,16 +22,16 @@ class Item < ApplicationRecord
                   so_bad:    4,
                   very_bad:  5
   }
-  enum dfee: {
+  enum delivery_fee: {
                   include:  0,
                   exclude:  1
   }
-  enum ddate: {
+  enum delivery_date: {
                         one_to_two:    0,
                         two_to_three:  1,
                         four_to_seven: 2
   }
-  enum demethod: {
+  enum delivery_method: {
                           undecided:           0,
                           easy_mercari_mail:   1,
                           yu_yu_mercari_mail:  2,
@@ -46,4 +56,7 @@ class Item < ApplicationRecord
                 four_XL: 8,
                 FREE_SIZE: 9
   }
+
+
+validates :name, presence: true
 end

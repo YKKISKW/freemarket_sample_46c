@@ -1,0 +1,27 @@
+- if comment.user != current_user
+  %li.is-item__comment.clearfix
+    = link_to "", class: "is-item__comment__user" do
+      %figure
+        = image_tag "https://rr.img.naver.jp/mig?src=http%3A%2F%2Fimgcc.naver.jp%2Fkaze%2Fmission%2FUSER%2F20150610%2F27%2F2577237%2F225%2F599x607x81c19bf8b41da42ddf3c2fd7.jpg%2F300%2F600&twidth=300&theight=0&qlt=80&res_format=jpg&op=r", class: ""
+        %figcaption #{comment.user.nickname}
+    .is-item__comment__body.body
+      .is-item__comment__body__text
+        = comment.comment
+      .is-item__comment__body__icons.clearfix
+        %time
+          = fa_icon "clock-o"
+          %span #{time_ago_in_words(comment.created_at)}前
+        = fa_icon 'flag'
+- else
+  %li.is-item__comment--self.clearfix
+    = link_to "", class: "is-item__comment--self__user" do
+      %figure
+        = image_tag "https://blog-001.west.edge.storage-yahoo.jp/res/blog-61-58/hirodebu3913_0927/folder/1027331/71/37250371/img_0", class: ""
+        %figcaption #{comment.user.nickname}
+    .is-item__comment--self__body.body
+      .is-item__comment__body__text
+        = comment.comment
+      .is-item__comment__body__icons.clearfix
+        %time
+          = fa_icon "clock-o"
+          %span #{time_ago_in_words(comment.created_at)}前
