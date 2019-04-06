@@ -6,6 +6,11 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @user = get_user_info()
     @card_info = get_credit_card()
+
+    # 現在のルーティングの設定上、credit_card#indexを呼ぶ際にルーティングに
+    # 設定しないといけないが可変にする必要はないので0固定にしている。
+    @order_id = 0
+
     render '/users/itemconfirm'
   end
 

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     get :search, on: :collection
     resources :likes, only: [:create]
     resources :comments, only: [:create]
-    resources :orders, only:[:new, :create]
+    resources :orders, only:[:new, :create] do
+      get 'card', to: 'credit_card#index'
+    end
   end
   root 'items#index'
   get 'users/new'
@@ -29,4 +31,5 @@ Rails.application.routes.draw do
   get 'itemsell', to: 'users#itemsell'
 
   resources :credit_card, only:[:index, :new, :create, :destroy]
+
 end
