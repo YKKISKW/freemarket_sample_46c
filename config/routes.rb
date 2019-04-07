@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create]
     resources :comments, only: [:create]
     resources :orders, only:[:new, :create] do
-      get 'card', to: 'credit_card#index'
+      resources :credit_card, only:[:index, :new, :create]
     end
   end
   root 'items#index'

@@ -5,7 +5,7 @@ class CreditCardController < ApplicationController
   def index
 
     # 呼び元に応じてビューの表示を変更する
-    @index_type = check_index_type()
+    @view_type = check_view_type()
 
     _credit_record = find_by_CreditRecord()
     if _credit_record && _credit_record.card_id
@@ -61,16 +61,12 @@ class CreditCardController < ApplicationController
   end
 
 
-  def check_index_type()
-    _index_type = {
-      "orders#new"        => "order",  #購入画面の支払い方法変更から呼ばれた時
-      "credit_card#index" => "mypage", #マイページの支払い方法変更から呼ばれた時
-    }
-    # リンク元のコントローラ名とアクション名を取得
-    _s = Rails.application.routes.recognize_path(request.referer).slice(:controller, :action)
-    _source_action = "#{_s[:controller]}##{_s[:action]}"
-
-    return _index_type[_source_action]
+  def check_view_type()
+    _f = params.permit(:item_id, :order_id).empty?
+    # 戻り値のステータス一覧
+    # true  => mypage : マイページの支払い方法変更から呼ばれた時
+    # false => order  : 購入画面の支払い方法変更から呼ばれた時
+    return (_f) ? ("mypage") : ("order")
   end
 
 end
