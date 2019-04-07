@@ -13,7 +13,6 @@ class CreditCardController < ApplicationController
     else
       @card_info = nil
     end
-    render 'users/credit'
   end
 
   # 支払い方法入力画面
