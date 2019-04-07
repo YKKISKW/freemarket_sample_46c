@@ -27,7 +27,8 @@
                 =link_to "/credit_card/:id", method: :delete, class: 'um-mypage-nav-list-item' do
                   削除する
               - else
-                = link_to creditregistration_path, data:{turbolinks: "false"}, class: "uc-btn-default uc-btn-red submit_btn" do
+                = link_to @button_url, data:{turbolinks: "false"}, class: "uc-btn-default uc-btn-red submit_btn" do
+
                   クレジットカードを追加する
                   = fa_icon 'credit-card', class: 'icon'
           .uc-settings

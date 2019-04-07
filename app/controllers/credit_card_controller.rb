@@ -1,24 +1,22 @@
 class CreditCardController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_view_type
 
   # 支払い方法確認画面
   def index
-    # 呼び元に応じてビューの表示を変更する
-    _view_type = check_view_type()
-
     _credit_record = find_by_CreditRecord()
     if _credit_record && _credit_record.card_id
       @card_info = Credit.get_CardInfo(_credit_record)
     else
       @card_info = nil
     end
-    render "index_#{_view_type}"
+    render "index_#{@view_type}"
   end
 
   # 支払い方法入力画面
   def new
     @credit = Credit.new
-    render 'users/creditregistration'
+    render "new_#{@view_type}"
   end
 
   # カード情報登録処理
@@ -59,13 +57,26 @@ class CreditCardController < ApplicationController
     return current_user.id
   end
 
-
+  # 呼び元に応じてビューの表示を変更する
   def check_view_type()
-    _f = params.permit(:item_id, :order_id).empty?
+    _param = params.permit(:item_id, :order_id)
+    _f = _param.empty?
+
     # 戻り値のステータス一覧
-    # true  => mypage : マイページの支払い方法変更から呼ばれた時
-    # false => order  : 購入画面の支払い方法変更から呼ばれた時
-    return (_f) ? ("mypage") : ("order")
+    # mypage : マイページの支払い方法変更から呼ばれた時
+    # order  : 購入画面の支払い方法変更から呼ばれた時
+    @view_type = (_f) ? ("mypage") : ("order")
+
+    case action_name
+    when "index"
+      @button_url = (_f) ?
+                    (new_credit_card_path):
+                    (new_item_order_credit_card_path(_param))
+    when "new"
+    when "create"
+    when "destroy"
+    end
+
   end
 
 end
