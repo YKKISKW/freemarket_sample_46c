@@ -3,9 +3,8 @@ class CreditCardController < ApplicationController
 
   # 支払い方法確認画面
   def index
-
     # 呼び元に応じてビューの表示を変更する
-    @view_type = check_view_type()
+    _view_type = check_view_type()
 
     _credit_record = find_by_CreditRecord()
     if _credit_record && _credit_record.card_id
@@ -13,6 +12,7 @@ class CreditCardController < ApplicationController
     else
       @card_info = nil
     end
+    render "index_#{_view_type}"
   end
 
   # 支払い方法入力画面
