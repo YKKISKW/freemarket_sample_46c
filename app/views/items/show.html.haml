@@ -102,25 +102,34 @@
     .is-item__description
       %p.is-item__description--inner
         #{@item.description}
-
-  - if @item.user == current_user
-    .is-item__change-box
-      = link_to '商品の編集', edit_item_path(@item),class: 'btn red'
-      %p or
-      .is-change.btn この商品を削除する
-
-
-    - if @item.user != current_user
-      .is-item__btns.clearfix
-        .is-item__btns--left
-          = render 'likes/like'
-          = link_to "#", class: "is-item__btns--left--report btn" do
-            = fa_icon "flag", class: "is-item__btns--left--report__icon"
-            %span.is-item__btns--left--report__text 不適切な商品の報告
-        .is-item__btns--right
-          = link_to "https://www.mercari.com/jp/safe/description/", class: "is-item__btns--right--safe" do
-            = fa_icon "lock", class: "is-item__btns--right--safe__icon"
-            %span.is-item__btns--right--safe__text あんしん・あんぜんへの取り組み
+    .is-item__btns.clearfix
+      .is-item__btns--left
+        = render 'likes/like'
+        = link_to "", class: "is-item__btns--left--report btn" do
+          = fa_icon "flag", class: "is-item__btns--left--report__icon"
+          %span.is-item__btns--left--report__text 不適切な商品の報告
+      .is-item__btns--right
+        = link_to "https://www.mercari.com/jp/safe/description/", class: "is-item__btns--right--safe" do
+          = fa_icon "lock", class: "is-item__btns--right--safe__icon"
+          %span.is-item__btns--right--safe__text あんしん・あんぜんへの取り組み
+  -#  - if @item.user == current_user
+  -#   .is-item__change-box
+  -#     = link_to '商品の編集', edit_item_path(@item),class: 'btn red'
+  -#     %p or
+  -#     .is-change.btn この商品を削除する
+  -#
+  -#
+  -#   - if @item.user != current_user
+  -#     .is-item__btns.clearfix
+  -#       .is-item__btns--left
+  -#         = render 'likes/like'
+  -#         = link_to "#", class: "is-item__btns--left--report btn" do
+  -#           = fa_icon "flag", class: "is-item__btns--left--report__icon"
+  -#           %span.is-item__btns--left--report__text 不適切な商品の報告
+  -#       .is-item__btns--right
+  -#         = link_to "https://www.mercari.com/jp/safe/description/", class: "is-item__btns--right--safe" do
+  -#           = fa_icon "lock", class: "is-item__btns--right--safe__icon"
+  -#           %span.is-item__btns--right--safe__text あんしん・あんぜんへの取り組み
 
 
 
