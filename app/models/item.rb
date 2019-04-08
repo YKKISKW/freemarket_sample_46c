@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   has_many :like_users, through: :likes, source: :user
   has_many :images, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   def like?(user)
     like_users.include?(user)
@@ -56,7 +57,10 @@ class Item < ApplicationRecord
                 four_XL: 8,
                 FREE_SIZE: 9
   }
-
+  enum item_status: {
+                  on_sale:  0,
+                  sold_out:  1
+  }
 
 validates :name, presence: true
 end

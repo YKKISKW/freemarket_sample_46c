@@ -98,18 +98,21 @@
       font-size: 16px;
       line-height: 1.5;
     }
-    input{
-      width: 100%;
-      margin: 8px 0 0;
-      text-align: center;
-      background: #aaa;
-      border: 1px solid #aaa;
-      color: #fff;
-      line-height: 48px;
-    }
     p{
       padding: 8px;
       background: #fff6de;
     }
   }
+}
+.is-item__comment-form__btn{
+  width: 100%;
+  margin: 8px 0 0;
+  text-align: center;
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  line-height: 48px;
+}
+.is-gray{
+  background: #888;
 }

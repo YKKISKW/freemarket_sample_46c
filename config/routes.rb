@@ -2,10 +2,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: "omniauth_callbacks",
   }
+  resources :categories, only: [:index, :show]
+  resources :middle_categories, only: [:index, :show]
+  resources :lower_categories, only: [:index, :show]
+  resources :brands, only: [:index, :show]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :items,only: [:new, :create, :show, :index, :destroy] do
+  resources :items do
+    get :search, on: :collection
     resources :likes, only: [:create]
     resources :comments, only: [:create]
+    resources :orders, only:[:new, :create]
   end
   root 'items#index'
   get 'users/new'
@@ -20,11 +27,6 @@ Rails.application.routes.draw do
   get 'itemconfirm', to: 'users#itemconfirm'
   get 'sign_up', to: 'users#sign_up'
   get 'itemsell', to: 'users#itemsell'
-  get 'items/search', to: 'items#search'
 
   resources :credit_card, only:[:index, :new, :create, :destroy]
-
-  resources :categories, only: [:index, :show]
-  resources :brands, only: [:index, :show]
-
 end

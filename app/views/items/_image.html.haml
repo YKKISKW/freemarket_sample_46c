@@ -1,0 +1,8 @@
+%li.is-image-li
+  %figure.is-image-li__figure
+    = image_tag image.image.url
+  .is-image-li__under
+    = link_to "#",class: "is-image-li__under--e" do
+      編集
+    = link_to "#",class: "is-image-li__under--e" ,id:"is-remove" ,data: {id:image.id} do
+      削除

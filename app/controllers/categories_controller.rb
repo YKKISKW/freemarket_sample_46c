@@ -1,13 +1,11 @@
 class CategoriesController < ApplicationController
-  def index
-    @categories = Category.all.includes([middle_categories: :lower_categories])
-
-    
+  def index 
+   
   end
 
   def show
+    @category = Category.find(params[:id])
+    @items = Item.where(category_id: params[:id]).order(id: "DESC")
   end
   
-
-
 end

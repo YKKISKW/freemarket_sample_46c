@@ -15,13 +15,13 @@
             %h3 新着商品
             .search-result
               .search-result__items
-                = render 'search_items', locals: {items: @items}
+                = render partial: 'items/search_items', collection: @items, as: "item"
           - else
             %h2
-              = "検索結果 1-#{@items.count}件"
+              = "検索結果 1-#{@items.length}件"
             .search-result
               .search-result__items
-                = render 'search_items', locals: {items: @items}
+                = render partial: 'items/search_items', collection: @items, as: "item"
       .search-container__pager
         = paginate(@items)
 

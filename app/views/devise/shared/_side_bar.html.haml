@@ -18,7 +18,7 @@
           いいね！一覧
           = fa_icon 'angle-right', class: 'icon'
       %li
-        =link_to itemsell_path, class: "um-mypage-nav-list-item" do
+        =link_to new_item_path, class: "um-mypage-nav-list-item" do
           出品する
           = fa_icon 'angle-right', class: 'icon'
       %li
@@ -80,7 +80,7 @@
         発送元・お届け先住所変更
         = fa_icon 'angle-right', class: 'icon'
       %li
-      =link_to credit_path, data:{turbolinks: "false"},class: "um-mypage-nav-list-item" do
+      =link_to credit_card_index_path, data:{turbolinks: "false"},class: "um-mypage-nav-list-item" do
         支払い方法
         = fa_icon 'angle-right', class: 'icon'
       %li

@@ -62,6 +62,12 @@
           position: relative;
           padding-left: 0;
 
+          i.fa.fa-list {
+            color: red;
+            padding-top: 10px;
+            padding-right: 7px;
+          }
+
           li.category__list {
 
             .category__list__text {
@@ -69,12 +75,16 @@
               font-size: 13px;
               font-weight: bold;
             }
+
+            a:hover {
+              color: #0099e8;
+            }
           }
 
           ul.top-main-header-nav-parent-wrap {
             display: none;
             width: 224px;
-            height: 600px;
+            height: auto;
             position: absolute;
             top: 30px;
             z-index: 1000;
@@ -91,6 +101,7 @@
                 line-height: 44px;
                 color: black;
 
+
                 text-decoration: none;
                 line-height: 44px;
 
@@ -99,6 +110,10 @@
                   color: black;
 
 
+                }
+
+                a:link {
+                  color: black;
                 }
 
                 a:visited {
@@ -169,50 +184,62 @@
 
 
 
+        }
 
-          li.brand__list {
-            padding-left: 30px;
+        i.fa.fa-tag {
+          color: red;
+          padding-top: 10px;
+          padding-left: 13px;
+          padding-right: 7px;
+        }
 
-            .brand__list__text {
+        li.brand__list {
+
+
+          .brand__list__text {
+            color: black;
+            font-size: 13px;
+            font-weight: bold;
+          }
+
+          a:hover {
+            color: #0099e8;
+          }
+
+          ul.top-main-header-nav-brand-wrap {
+            display: none;
+            width: 224px;
+            height: auto;
+            position: absolute;
+            top: 30px;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+            left: 130px;
+
+            a:visited {
               color: black;
-              font-size: 13px;
-              font-weight: bold;
             }
 
-            ul.top-main-header-nav-brand-wrap {
-              display: none;
-              width: 224px;
-              height: 300px;
-              position: absolute;
-              top: 30px;
-              z-index: 1000;
-              background-color: white;
-              box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
-              left: 130px;
-
-              a:visited {
-                color: black;
-              }
-
-              a:hover {
-                color: white;
-              }
+            a:hover {
+              color: white;
+            }
 
 
-              h3.brand__text {
-                font-size: 14px;
-                padding: 0 16px;
-                line-height: 44px;
+            h3.brand__text {
+              font-size: 14px;
+              padding: 0 16px;
+              line-height: 44px;
 
-
-              }
 
             }
 
           }
 
         }
+
       }
+
 
       &__right {
         ul.right {
@@ -272,10 +299,12 @@
             }
           }
         }
+
       }
     }
   }
 }
+
 
 .footer-sell-btn {
   bottom: 32px;

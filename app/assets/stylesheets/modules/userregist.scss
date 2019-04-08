@@ -79,12 +79,11 @@
             }
             &__span{
               background: #ea352d;
-              margin: 0 0 0 8px;
               padding: 2px 4px;
               border-radius: 2px;
               color: #fff;
               font-size: 12px;
-              vertical-align: top;
+              vertical-align: middle;
             }
             &__field{
               width: 100%;
@@ -112,7 +111,15 @@
         }
             &__center{
               text-align: center;
-              font-size: 16px;
+              font-size: 14px;
+              color: black;
+            }
+            .ur-form-group--blue{
+              color: #0099e8;
+              font-size: 14px
+            }
+            .ur-form-group--blue:hover {
+              text-decoration: underline;
             }
             &-birthday{
               width: 140px;
@@ -126,6 +133,10 @@
                 margin: 8px 0 0;
                 position: relative;
                 background: #fff;
+                display: flex;
+                line-height: 50px;
+                padding-right: 10px;
+
               &--select{
                   width: 100%;
                   position: relative;
@@ -139,7 +150,8 @@
                   font-size: 16px;
                   line-height: 1.5;
                   cursor: pointer;
-              }
+
+                }
               }
             }
         }
@@ -174,6 +186,17 @@
       }
         &__btn{
 
+        }
+        .confirm-registration {
+          font-size: 14px;
+          color:#0099e8;
+          text-decoration: none;
+          display: block;
+          text-align: right;
+          margin-top: 30px;
+        }
+        .confirm-registration:hover {
+          text-decoration: underline;
         }
       }
     }

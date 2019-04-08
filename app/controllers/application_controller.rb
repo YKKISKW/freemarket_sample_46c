@@ -18,8 +18,11 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
+    # binding.pry
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :first_name,:last_name,:first_name_kana,:last_name_kana,:year, :month, :day])
   end
+
+
 
   def set_categories
     @categories = Category.all.includes([middle_categories: :lower_categories])
@@ -30,6 +33,7 @@ class ApplicationController < ActionController::Base
   def set_brands
     @brands = Brand.all.where('name LIKE(?)', "%#{params[:name]}%")
   end
+
 
 
 end

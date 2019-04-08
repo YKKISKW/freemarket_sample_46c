@@ -24,16 +24,73 @@ class ItemForm
                       :delivery_date,
                       :price,
                       :images,
-                      :user_id
+                      :remove_images,
+                      :user_id,
+                      :id
+
+  def initialize(attr = {})
+    if attr[:id] #商品のIDがある時(edit or update)
+      if attr[:name] #updateの時
+        attr.each do |k,v|
+          self.send("#{k}=", v)
+        end
+      else #editの時
+        @item = Item.find(attr[:id])
+        item_params = @item.attributes
+        item_params.each do |k,v|
+          self.send("#{k}=", v) if self.methods.include?(k.to_sym)
+        end
+      end
+    else
+      super(attr)
+    end
+  end
 
   def save
     return false if invalid?
-    item = Item.new(name: name,description: description,category_id: category_id,brand_id: brand_id,status: status,delivery_fee: delivery_fee,delivery_method: delivery_method,prefecture_id: prefecture_id,delivery_date: delivery_date,price: price,user_id:user_id)
+    item = Item.new(item_params)
     images.each do |i|
       item.images.new(image: i)
       item.save
     end
   end
+
+  def update
+    @item = Item.find(id)
+    self.images = @item.images unless images
+    return false if invalid?
+    if remove_images
+      remove_images.each do |r|
+        @item.images.find(r).destroy
+      end
+    end
+    unless images == @item.images
+      images.each do |i|
+        @item.images.new(image: i)
+        @item.save
+      end
+    end
+        @item.update(item_params)
+  end
+
+  private
+
+  def item_params
+    {
+      name: name,
+      description: description,
+      category_id: category_id,
+      brand_id: brand_id,
+      status: status,
+      delivery_fee: delivery_fee,
+      delivery_method: delivery_method,
+      prefecture_id: prefecture_id,
+      delivery_date: delivery_date,
+      price: price,
+      user_id:user_id
+    }
+  end
+
 
 
 end

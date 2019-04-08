@@ -23,6 +23,12 @@ $(document).on('turbolinks:load', function(){
   }
 //////////////////////////////////////////////////////////////////////////////////////////
 //
+////removeField/////////////////////////////////////////////////////////////////////
+  var removeFieldList = $(".is-upload-box-container")
+  function appendRemoveField(removeImageId){
+    var html = `<input value="${removeImageId}" multiple="multiple" type="hidden" name="item_form[remove_images][]">`
+  removeFieldList.append(html);
+}
 //////////addClass//////////////////////////////////////////////////////////////////
   function addClass(){
     switch (imgCount){
@@ -107,7 +113,7 @@ $(document).on('turbolinks:load', function(){
 ////イメージアップローダーで複数画像投稿機能///////////////////////////////////////////////////////////////////////////////////
      isLabelFor = $(".is-upload-box-container").find("#is-add").attr("for");// 未アップロード時のラベルのforを取得する
      file = ""// ファイルの初期化
-     imgCount = 0
+     imgCount = Number(isLabelFor.substr(7,1));
   $(".is-upload-box-container").change(`#${isLabelFor}`,function(e){
     e.preventDefault();
 // アップローダーのdata-idを取得
@@ -170,6 +176,10 @@ $(document).on('turbolinks:load', function(){
     }
     $(this).parent().parent().remove();
     $(".is-add-up").find(`#${imgId}`).remove();
+    //編集画面で投稿ずみの画像を削除するとき
+      if ($(this).data("id")){
+        appendRemoveField($(this).data("id"));
+      }
   })
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //

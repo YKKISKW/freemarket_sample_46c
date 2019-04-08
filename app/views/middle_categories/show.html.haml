@@ -1,0 +1,13 @@
+= render 'users/top-header'
+= render 'users/camera-btn'
+- breadcrumb :middle_category,@middle_category
+= render 'users/bread-crumbs'
+%secttion.items-list
+  %h1.items-list__title
+    #{@middle_category.name}の商品一覧
+  - if @items.length > 0
+    .items-list__item-container
+      = render partial: 'items/items_top/item', collection: @items
+  - else
+    商品がありません
+= render 'users/top-footer'

@@ -1,0 +1,10 @@
+= render "devise/shared/login-header"
+
+.ib-content
+  %h2.ib-content__title
+    = "商品購入に#{@MESSAGE}しました"
+  %section.ib-content__item
+    .ib-content__item-inner
+      = link_to root_path do
+        %button.ib-content__item-inner__form-submit TOPヘ戻る
+= render "devise/shared/login-footer"

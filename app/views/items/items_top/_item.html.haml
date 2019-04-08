@@ -1,7 +1,7 @@
 .items-box
   = link_to item_path(item), data: {"turbolinks"=>false} do
     .top-photo
-      = image_tag("https://static.mercdn.net/item/detail/orig/photos/m62714068264_1.jpg?1553922913",class: "lazyloaded is-higher-width")
+      = image_tag(item.images[0].image.to_s,class: "lazyloaded is-higher-width")
     .items-box-body
       %h3.items-box-body__name
         =item.name

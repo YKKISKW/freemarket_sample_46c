@@ -1,7 +1,6 @@
 class Credit < ApplicationRecord
   belongs_to :user
 
-
   def self.regist_CardInfo(record, token)
     set_api_key()
 
@@ -21,13 +20,13 @@ class Credit < ApplicationRecord
   def self.get_CardInfo(record)
     set_api_key()
 
-    #顧客情報の取得
+    # 顧客情報の取得
     _customer = Payjp::Customer.retrieve(record.customer_id)
 
-    #顧客のカード情報取得
+    # 顧客のカード情報取得
     _card_info = _customer.cards.retrieve(_customer[:default_card])
 
-    #戻り値の生成
+    # 戻り値の生成
     return {
       brand:     _card_info.brand.downcase,
       exp_month: _card_info.exp_month,
@@ -49,9 +48,27 @@ class Credit < ApplicationRecord
     record.card_id = nil if _card.delete[:deleted]
   end
 
+  # 購入者からサイトへの入金処理
+  def self.deposit_CardInfo(_user_id, _price)
+    _ret = nil
+    # DBに保存しているカード情報を取得
+    _record = Credit.find_by(user_id: _user_id)
+    if _record.customer_id
+      set_api_key()
+      # 支払い処理
+      _charge = Payjp::Charge.create(
+                  amount: _price,
+                  customer: _record.customer_id,
+                  currency: 'jpy',
+                )
+      _ret = _charge['id'] unless _charge['error']
+    end
+    return _ret
+  end
+
   private
   def self.set_api_key
-    #APIキーの設定
+    # APIキーの設定
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
   end
 

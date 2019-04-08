@@ -40,82 +40,82 @@ MiddleCategory.create!([
   { id: 1,
     name: 'トップス',
     category_id: 1,
-    
+
   },
   { id: 2,
     name: 'ジャケット',
     category_id: 1,
-   
+
   },
   { id: 3,
     name: 'パンツ',
     category_id: 1,
-    
+
   },
   { id: 4,
     name: 'トップス',
     category_id: 2,
-   
+
   },
   { id: 5,
     name: 'ジャケット/アウター',
     category_id: 2,
-  
+
   },
   { id: 6,
     name: 'パンツ',
     category_id: 2,
-   
+
   },
   { id: 7,
     name: 'ベビー服(女の子用)',
     category_id: 3,
-    
+
   },
   { id: 8,
     name: 'ベビー服(男の子用)',
     category_id: 3,
-   
+
   },
   { id: 9,
     name: 'ベビー服(男女兼用)',
     category_id: 3,
-    
+
   },
   { id: 10,
     name: 'キッチン/食器',
     category_id: 4,
-    
+
   },
   { id: 11,
     name: 'ベット/マットレス',
     category_id: 4,
-    
+
   },
   { id: 12,
     name: 'ソファ/ソファベッド',
     category_id: 4,
-    
+
   },
   { id: 13,
     name: '本',
     category_id: 5,
-    
+
   },
   { id: 14,
     name: '漫画',
     category_id: 5,
-    
+
   },
   { id: 15,
     name: 'おもちゃ',
     category_id: 6,
-    
+
   },
   { id: 16,
     name: 'タレントグッズ',
     category_id: 6,
-   
+
   },
 
 
@@ -169,12 +169,10 @@ USER_TABLE_MAX.times do |n|
  name = Faker::Pokemon.name
  email = Faker::Internet.email
  password = "password"
- birthday =Faker::Time.between(40.years.ago, 18.years.ago, :all).to_s[0, 10]
  User.create!(id: n+1,
               nickname: name,
               email: email,
               password: password,
-              birthday: birthday
              )
 end
 
@@ -216,3 +214,13 @@ COMMENT_TABLE_MAX.times do |n|
   }
   Comment.create!(dumy_data)
 end
+
+200.times do |n|
+  dumy_data = {
+    id:               n+1,
+    image:            open("#{Rails.root}/app/assets/images/sample.jpg"),
+    item_id:          n+1,
+  }
+  Image.create!(dumy_data)
+end
+

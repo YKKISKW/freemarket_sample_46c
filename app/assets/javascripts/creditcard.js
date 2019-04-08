@@ -80,7 +80,8 @@ $(document).on('turbolinks:load', function() {
     });
   }
 
-  $('#submit-button').click(function() {
+  $('#submit-button').click(function(e) {
+    e.preventDefault();
     (async()=> {
       let card_token;
       let card_info = get_card_info(false);

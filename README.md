@@ -5,11 +5,13 @@
 |nickname|string|null: false|
 |mail_adress|string|null: false, unique:true|
 |password|string|null: false|
-|first_name|string||
-|last_name|string||
-|first_name(kana)|string||
-|last_name(kana)|string||
-|birthday|integer||
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name(kana)|string|null: false|
+|last_name(kana)|string|null: false|
+|year|integer|null: false|
+|month|integer|null: false|
+|day|integer|null: false|
 
 ### Association
 - has_many :comments
@@ -26,15 +28,15 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|bigint|foreign_key: true|
-|provider|varchara|unique:true|
-|uid|varchara|unique:true|
-|name|varchara||
-|nickname|varchara||
-|email|varchara||
-|url|varchara||
-|imege_url|varchara||
-|description|varchara||
+|user_id|integer|foreign_key: true|
+|provider|string|unique:true|
+|uid|string|unique:true|
+|name|string||
+|nickname|string||
+|email|string||
+|url|string||
+|imege_url|string||
+|description|string||
 |other|text||
 |credentials|text||
 |raw_info|text||
@@ -163,7 +165,7 @@
 - belongs_to :item
 - belongs_to :user
 - has_one :review
-
+- has_many :settlement
 
 ## likesテーブル
 |Column|Type|Options|
@@ -199,6 +201,14 @@
 ### Association
 - belongs_to :user
 
+## Settlement
+|Column|Type|Options|
+|------|----|-------|
+| order_id |integer|null: false, foreign_key: true|
+| charge_id|integer|null: false|
+
+### Association
+- belongs_to :order
 
 ## sns_credentialsテーブル
 |Column|Type|Options|

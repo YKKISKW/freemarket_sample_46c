@@ -6,12 +6,13 @@
   %section.ib-content__item
     .ib-content__item-inner
       .ib-content__item-inner__image
-        =image_tag("https://static.mercdn.net/thumb/photos/m38494063665_1.jpg?1553066564", width:148, height:148)
+        = image_tag(@item.images[0].image.to_s, size:"148x148")
       %p.ib-content__item-inner-name
-        値下げ　トトロ　ぬいぐるみ
-      = form_with url: root_path,local: true ,html: {class: "ib-content__item-inner__form"} do |f|
+        = @item.name
+      = form_with url:item_orders_path(@item.id), local:true, html: {class: "ib-content__item-inner__form"} do |f|
+
         %p.ib-content__item-inner__form-pay
-          = "¥" + "830"
+          = converting_to_jpy(@item.price)
           %span
             送料込み
         -# @ToDo ポイントがある場合に表示するアコーディオンメニューの実装はまだ。
@@ -22,22 +23,25 @@
           .ib-content__item-inner__orm-payment-text
             支払い金額
           .ib-content__item-inner__form-payment-price
-            = "¥ " + "999"
-        -# @ToDo 以下例のようにサーバーへ送るhidden情報を追加する。
-        -#= f.hidden_field :price, value: 666
-        -#= f.hidden_field :buyer_id, value: current_user.id
-        = f.submit "購入する", class: "ib-content__item-inner__form-submit"
+            = converting_to_jpy(@item.price)
+
+        = f.hidden_field :item_id, value: @item.id
+        = f.hidden_field :user_id, value: @user[:id]
+        - if @card_info
+          = f.submit "購入する", class: "ib-content__item-inner__form-submit"
+        - else
+          = f.submit "購入する", class: "ib-content__item-inner__form-submit-disable"
 
   .ib-content__address
     .ib-content__address-inner
       %h3 配送先
       %address
         .ib-content__address-innerr__text
-          = "〒" + "123-4567"
+          = @user[:postal_code]
           %br
-          = "東京都渋谷区道玄坂2丁目10番12号 新大宗ビル3号館8階"
+          = @user[:street_address]
           %br
-          = "鼻水 太郎"
+          = @user[:name]
       .ib-content__address-inner__change
         =link_to "#", class: "ib-content__address-inner__change-link" do
           変更する
@@ -46,12 +50,16 @@
   .ib-content__payment
     .ib-content__payment-inner
       %h3 支払い方法
-      %p.ib-content__payment-inner__info
-        = "************9714"
-        %br
-        = "11 / 21"
-      .ib-content__payment-inner__visa
-        =image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?3112359103", width:49, height:15)
+      - if @card_info
+        %p.ib-content__payment-inner__info
+          = "************#{@card_info[:last4]}"
+          %br
+          = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
+        .ib-content__payment-inner__logo
+          = get_credit_log(@card_info[:brand])
+      - else
+        %p.ib-content__payment-inner__info
+          = "/"
       .ib-content__payment-inner__change
         =link_to("#", class:"ib-content__payment-inner__change-link") do
           変更する
