@@ -34,7 +34,7 @@ class CreditCardController < ApplicationController
     Credit.regist_CardInfo(@credit_record, _token)
     @credit_record.save
 
-    redirect_to credit_card_index_path
+    redirect_to @redirect_url
   end
 
   # カード情報削除画面
@@ -44,7 +44,7 @@ class CreditCardController < ApplicationController
       Credit.destroy_CardInfo(_credit_record)
       _credit_record.save
     end
-    redirect_to credit_card_index_path
+    redirect_to @redirect_url
   end
 
   private
@@ -69,14 +69,21 @@ class CreditCardController < ApplicationController
 
     case action_name
     when "index"
-      @button_url = (_f) ?
-                    (new_credit_card_path):
-                    (new_item_order_credit_card_path(_param))
+      @not_registered_url = (_f) ?
+                        (new_credit_card_path):
+                        (new_item_order_credit_card_path(_param))
+      @registered_url = (_f) ?
+                        (credit_card_path(0)):
+                        (new_item_order_path)
     when "new"
-    when "create"
-    when "destroy"
+      @button_url = (_f) ?
+                    (credit_card_index_path):
+                    (item_order_credit_card_index_path(_param))
+
+    when "create", "destroy"
+      @redirect_url = (_f) ?
+                      (credit_card_index_path):
+                      (item_order_credit_card_index_path(_param))
     end
-
   end
-
 end

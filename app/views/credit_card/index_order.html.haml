@@ -1,9 +1,9 @@
-= render 'users/top-header'
+= render "devise/shared/login-header"
 .um-default
   - breadcrumb :credit
-  = render 'users/bread-crumbs'
+  -# = render 'users/bread-crumbs'
   .um-container
-    = render 'devise/shared/side_bar'
+    -# = render 'devise/shared/side_bar'
     .uc-content
       %section.uc-content__chapter
         %h2.uc-content__chapter__head 支払い方法
@@ -23,16 +23,10 @@
                   = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
                 .ib-content__payment-inner__visa
                   = get_credit_log(@card_info[:brand])
-                -# [@ToDo]Myページから遷移時のみ削除ボタンを表示させるようにする
-                =link_to "/credit_card/:id", method: :delete, class: 'um-mypage-nav-list-item' do
-                  削除する
-              - else
-                = link_to @button_url, data:{turbolinks: "false"}, class: "uc-btn-default uc-btn-red submit_btn" do
+                =link_to @registered_url, class: 'um-mypage-nav-list-item' do
                   クレジットカードを追加する
                   = fa_icon 'credit-card', class: 'icon'
-          .uc-settings
-            = link_to "#" do
-              支払い方法について
-              = fa_icon 'angle-right', class: 'icon'
-= render 'users/camera-btn'
-= render 'users/top-footer'
+              - else
+                = link_to @not_registered_url, class: "uc-btn-default uc-btn-red submit_btn" do
+                  次へ進む
+= render "devise/shared/login-footer"
