@@ -117,7 +117,7 @@
 
   - if @item.user == current_user
     .is-item__change-box
-      = link_to '商品の編集', '#', class: 'btn red'
+      = link_to '商品の編集', edit_item_path(@item), class: 'btn red'
       %p or
       .is-change.btn この商品を削除する
 
