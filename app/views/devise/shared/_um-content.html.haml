@@ -7,12 +7,14 @@
           =image_tag("member_photo_noimage_thumb.png")
         %p.um-user-name
           = link_to "#{current_user.nickname}"
-          .um-under-content
-            %span.um-counter-label 評価
-            %span.um-counter 0
-          .um-under-content
-            %span.um-counter-label 出品数
-            %span.um-counter 0
+          .um-under-counter
+            .um-under-content
+              %span.um-counter-label 評価
+              %span.um-counter 0
+            .um-under-content__flex
+              %span.um-counter-label 出品数
+              %span.um-counter
+                = current_user.items.count
     .um-content-user__tabs
       %input#tab-info{type: "radio",name: "tab_btn1",checked: true}
       %label.tab_btn1{for: "tab-info"}お知らせ
