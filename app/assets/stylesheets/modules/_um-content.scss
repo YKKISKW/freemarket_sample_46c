@@ -29,9 +29,16 @@ float: right;
       .um-user-name{
         font-weight: 600;
       }
-      .um-under-content{
-        display: inline-block;
-        width: 60px;
+      .um-under-counter{
+          display: flex;
+          margin-left: 240px;
+        .um-under-content{
+            display: inline-block;
+            width: 60px;
+          &__flex{
+            display: flex;
+          }
+        }
       }
       .um-counter-label{
         font-size: 14px;
