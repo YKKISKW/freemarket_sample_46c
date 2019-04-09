@@ -4,7 +4,7 @@
     .ul-login
       .ul-new
         %p.ul-new__no-acount アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", sign_up_path,class: "ul-new__regist"
+        = link_to "新規会員登録", sign_up_users_path,class: "ul-new__regist"
       .ul-sns
         = link_to  user_facebook_omniauth_authorize_path,class: "btn ul-sns__btn-default ul-sns__btn-sns ul-sns__btn-sns-fb",id: "ul-sns__fblogin" do
           Facebookでログイン
