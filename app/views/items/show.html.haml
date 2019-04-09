@@ -103,13 +103,6 @@
       %p.is-item__description--inner
         #{@item.description}
 
-  - if @item.user == current_user
-    .is-item__change-box
-      = link_to '商品の編集', edit_item_path(@item),class: 'btn red'
-      %p or
-      .is-change.btn この商品を削除する
-
-
     - if @item.user != current_user
       .is-item__btns.clearfix
         .is-item__btns--left
@@ -122,7 +115,11 @@
             = fa_icon "lock", class: "is-item__btns--right--safe__icon"
             %span.is-item__btns--right--safe__text あんしん・あんぜんへの取り組み
 
-
+  - if @item.user == current_user
+    .is-item__change-box
+      = link_to '商品の編集', '#', class: 'btn red'
+      %p or
+      .is-change.btn この商品を削除する
 
   .is-item__comment-block
     .is-item__comment__wrapper
