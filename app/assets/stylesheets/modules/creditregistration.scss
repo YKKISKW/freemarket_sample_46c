@@ -157,3 +157,166 @@
     }
   }
 }
+.order_um {
+  width: 100%;
+  &-container {
+    &__credit-right-content {
+      height: 700px;
+      width: 700px;
+      margin: auto;
+      background-color: #fff;
+      &__wrapper {
+        .credit-title{
+          font-weight: bold;
+          font-size: 24px;
+          text-align: center;
+          height: 50px;
+          border-bottom: 1px solid #f5f5f5;
+          line-height: 50px;
+        }
+      }
+      &__wrapper__box{
+        padding: 64px;
+        height: 616px;
+        &__form {
+          &__center {
+            max-width: 320px;
+            margin: 0 auto;
+            height: 487px;
+            &__number {
+              .number-title {
+                font-weight: bold;
+                font-size: 14px;
+                display: inline-block;
+                vertical-align: top;
+              }
+              .form-require {
+                margin: 0 0 0 8px;
+                padding: 2px 4px;
+                border-radius: 2px;
+                color: #fff;
+                font-size: 12px;
+                vertical-align: top;
+                background: #ea352d;
+              }
+            }
+            .number-form {
+              height: 46px;
+              width: 305px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+              padding-left: 15px;
+            }
+            .card-all {
+              display: flex;
+              height: 20px;
+              li {
+                img {
+                  height: 20px;
+                  vertical-align: middle;
+                  margin-right: 5px;
+                }
+                .visa {
+                  width: 49px;
+                }
+                .master{
+                  width:34px;
+                }
+                .saison{
+                  width:30px;
+                }
+                .jcb {
+                  width:32px;
+                }
+                .american{
+                  width:21px;
+                }
+                .dinners {
+                  width:32px;
+                }
+                .discover {
+                  width:32px;
+                }
+              }
+            }
+            &__expiration-month{
+              margin-top: 40px;
+              .expiration-title {
+                font-weight: bold;
+                font-size: 14px;
+                display: inline-block;
+                vertical-align: top;
+              }
+              .form-require {
+                margin: 0 0 0 8px;
+                padding: 2px 4px;
+                border-radius: 2px;
+                color: #fff;
+                font-size: 12px;
+                vertical-align: top;
+                background: #ea352d;
+              }
+            }
+            .form-month {
+              height: 46px;
+              width: 112px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+              padding-left: 15px;
+              font-size: 14px;
+              margin-bottom:10px;
+            }
+            span {
+              font-size: 14px;
+              margin: 0 4px;
+            }
+            &__security {
+              margin-top: 30px;
+            }
+            &__caution {
+              text-align: right;
+            }
+            .question {
+              display: inline-block;
+              width: 14px;
+              height: 14px;
+              border-radius: 50%;
+              background: #0099e8;
+              color: #fff;
+              line-height: 14px;
+              font-size: 12px;
+              text-align: center;
+            }
+            .credit-question-number {
+              text-align: right;
+              color: #0099e8;
+              font-size: 14px;
+              display: inline;
+            }
+            .submit-button {
+              display: block;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              border: 1px solid transparent;
+              -webkit-transition: all ease-out .3s;
+              transition: all ease-out .3s;
+              cursor: pointer;
+              text-align: center;
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+              margin-top: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
