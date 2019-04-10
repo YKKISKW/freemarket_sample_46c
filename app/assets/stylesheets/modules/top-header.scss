@@ -217,19 +217,26 @@
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
             left: 130px;
 
-            a:visited {
-              color: black;
-            }
-
-            a:hover {
-              color: white;
-            }
+            
 
 
             h3.brand__text {
               font-size: 14px;
               padding: 0 16px;
               line-height: 44px;
+              color: black;
+
+              a:link {
+                color: black;
+              }
+  
+              a:visited {
+                color: black;
+              }
+  
+              a:hover {
+                color: white;
+              }
 
 
             }
