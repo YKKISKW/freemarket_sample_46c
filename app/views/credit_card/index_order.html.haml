@@ -1,32 +1,19 @@
 = render "devise/shared/login-header"
-.um-default
-  - breadcrumb :credit
-  -# = render 'users/bread-crumbs'
-  .um-container
-    -# = render 'devise/shared/side_bar'
-    .uc-content
-      %section.uc-content__chapter
-        %h2.uc-content__chapter__head 支払い方法
-        %h2.uc-content__chapter__head [@kari]オーダー
-        .uc-single
-          %section.uc-single__inner
-            .uc-single__content
-              %h3.uc-content-chapter-sub-head クレジットカード一覧
-            %ul.uc-payment-list
-          %section.uc-add-card
-            .uc-single__content
-              - if @card_info
-                -# [@ToDo]ビューの調整必要
-                %p.ib-content__payment-inner__info
-                  = "************#{@card_info[:last4]}"
-                  %br
-                  = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
-                .ib-content__payment-inner__visa
-                  = get_credit_log(@card_info[:brand])
-                =link_to @registered_url, class: 'um-mypage-nav-list-item' do
-                  クレジットカードを追加する
-                  = fa_icon 'credit-card', class: 'icon'
-              - else
-                = link_to @not_registered_url, class: "uc-btn-default uc-btn-red submit_btn" do
-                  次へ進む
+.order_uc
+  .order_uc-content
+    %h2.order_uc-content__title
+      支払い方法
+    .order_uc-content__detail
+      .inner
+        .inner-info
+          %h3
+            クレジットカード一覧
+          = get_credit_log(@card_info[:brand])
+          %p
+            = "************#{@card_info[:last4]}"
+            %br
+            = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
+        .inner-link
+          =link_to @registered_url do
+            次に進む
 = render "devise/shared/login-footer"
