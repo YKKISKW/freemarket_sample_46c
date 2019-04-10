@@ -33,6 +33,19 @@
         display: block;
         font-weight: bold;
       }
+      img {
+        // float: left;
+        height: 15px;
+        width: 49px;
+      }
+      a {
+        float: right;
+        color: red;
+        border : solid 1px red;
+        padding: 3px;
+        border-radius: 2px;
+        // display: block;
+      }
     }
   }
   ul {

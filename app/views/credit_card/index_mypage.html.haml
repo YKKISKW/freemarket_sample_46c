@@ -15,12 +15,12 @@
           %section.uc-add-card
             .uc-single__content
               - if @card_info
+                .ib-content__payment-inner__visa
+                  = get_credit_log(@card_info[:brand])
                 %p.ib-content__payment-inner__info
                   = "************#{@card_info[:last4]}"
                   %br
                   = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
-                .ib-content__payment-inner__visa
-                  = get_credit_log(@card_info[:brand])
                 =link_to @registered_url, method: :delete, class: 'um-mypage-nav-list-item' do
                   削除する
               - else
