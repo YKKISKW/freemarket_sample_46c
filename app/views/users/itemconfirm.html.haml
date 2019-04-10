@@ -61,8 +61,13 @@
         %p.ib-content__payment-inner__info
           = "/"
       .ib-content__payment-inner__change
-        =link_to(item_order_credit_card_index_path(@item.id, @order_id), class:"ib-content__payment-inner__change-link") do
-          変更する
-          = fa_icon "angle-right"
+        - if @card_info
+          =link_to(item_order_credit_card_index_path(@item.id, @order_id), class:"ib-content__payment-inner__change-link") do
+            変更する
+            = fa_icon "angle-right"
+        - else
+          =link_to(new_item_order_credit_card_path(@item.id, @order_id), class:"ib-content__payment-inner__change-link") do
+            変更する
+            = fa_icon "angle-right"
 
 = render "devise/shared/login-footer"
