@@ -6,9 +6,8 @@
     .credit-right-content
       .credit-right-content__wrapper
         %h2.credit-title クレジットカード情報入力
-        %h2.credit-title [@kari]マイページ
       .credit-right-content__wrapper__box
-        = form_with url: @button_url ,local: true, id:"credit_form", class: "credit-right-content__wrapper__box__form" do |f|
+        = form_with url: @regist_url ,local: true, id:"credit_form", class: "credit-right-content__wrapper__box__form" do |f|
           .credit-right-content__wrapper__box__form__center
             .credit-right-content__wrapper__box__form__center__number
               .h4.number-title カード番号

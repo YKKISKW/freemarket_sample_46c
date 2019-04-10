@@ -69,14 +69,14 @@ class CreditCardController < ApplicationController
 
     case action_name
     when "index"
-      @not_registered_url = (_f) ?
-                        (new_credit_card_path):
-                        (new_item_order_credit_card_path(_param))
-      @registered_url = (_f) ?
-                        (credit_card_path(0)):
-                        (new_item_order_path)
+      if (_f)
+        @not_registered_url = new_credit_card_path
+        @registered_url = credit_card_path(0)
+      else
+        @registered_url = new_item_order_path
+      end
     when "new"
-      @button_url = (_f) ?
+      @regist_url = (_f) ?
                     (credit_card_index_path):
                     (item_order_credit_card_index_path(_param))
 
