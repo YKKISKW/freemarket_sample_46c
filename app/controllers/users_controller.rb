@@ -21,12 +21,6 @@ class UsersController < ApplicationController
   def userlogout
   end
 
-  def credit
-  end
-
-  def creditregistration
-  end
-
   def sign_up
   end
 

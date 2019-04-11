@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :middle_categories, only: [:index, :show]
   resources :lower_categories, only: [:index, :show]
   resources :brands, only: [:index, :show]
+  resources :credit_card, only:[:index, :new, :create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :items do
@@ -21,11 +22,8 @@ Rails.application.routes.draw do
       get :profile
       get :userconfirm
       get :userlogout
-      get :credit
-      get :creditregistration
       get :sign_up
     end
   end
   root 'items#index'
-  resources :credit_card, only:[:index, :new, :create, :destroy]
 end

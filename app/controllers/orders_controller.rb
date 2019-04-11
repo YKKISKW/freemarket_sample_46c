@@ -10,8 +10,6 @@ class OrdersController < ApplicationController
     # 現在のルーティングの設定上、credit_card#indexを呼ぶ際にルーティングに
     # 設定しないといけないが可変にする必要はないので0固定にしている。
     @order_id = 0
-
-    render '/users/itemconfirm'
   end
 
   # 商品購入処理
