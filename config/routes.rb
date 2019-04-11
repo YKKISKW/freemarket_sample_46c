@@ -31,5 +31,4 @@ Rails.application.routes.draw do
   get 'itemsell', to: 'users#itemsell'
 
   resources :credit_card, only:[:index, :new, :create, :destroy]
-
 end

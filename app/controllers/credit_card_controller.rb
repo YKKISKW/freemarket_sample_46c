@@ -70,6 +70,9 @@ class CreditCardController < ApplicationController
     case action_name
     when "index"
       if (_f)
+        # カード情報登録状況によってリンク先が変わる。
+        # 現状はカード登録状況が分かる前に呼ばれる、before_actionをトリガーに
+        # しているため、両方のパラメーターを設定している。
         @not_registered_url = new_credit_card_path
         @registered_url = credit_card_path(0)
       else
@@ -79,8 +82,9 @@ class CreditCardController < ApplicationController
       @regist_url = (_f) ?
                     (credit_card_index_path):
                     (item_order_credit_card_index_path(_param))
-
     when "create", "destroy"
+      # destroyアクションはmypageからしか呼ばれないが、
+      # createアクションと同じ挙動なのでまとめて記述している。
       @redirect_url = (_f) ?
                       (credit_card_index_path):
                       (item_order_credit_card_index_path(_param))
