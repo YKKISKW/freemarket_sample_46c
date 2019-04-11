@@ -2,7 +2,7 @@
   %nav.um-mypage-nav
     %ul.um-mypage-nav-list
       %li
-        =link_to mypage_path, data:{turbolinks: "false"}, class: "um-mypage-nav-list-item" do
+        =link_to user_path(current_user.id), data:{turbolinks: "false"}, class: "um-mypage-nav-list-item" do
           マイページ
           = fa_icon 'angle-right', class: 'icon'
       %li
@@ -72,7 +72,7 @@
     %h3.um-mypage-nav-head 設定
     %ul.um-mypage-nav-list
       %li
-      =link_to profile_path, data:{turbolinks: "false"}, class: "um-mypage-nav-list-item" do
+      =link_to profile_users_path, data:{turbolinks: "false"}, class: "um-mypage-nav-list-item" do
         プロフィール
         = fa_icon 'angle-right', class: 'icon'
       %li
@@ -88,7 +88,7 @@
         メール/パスワード
         = fa_icon 'angle-right', class: 'icon'
       %li
-      =link_to userconfirm_path, data:{turbolinks: "false"}, class: "um-mypage-nav-list-item" do
+      =link_to userconfirm_users_path, data:{turbolinks: "false"}, class: "um-mypage-nav-list-item" do
         本人情報
         = fa_icon 'angle-right', class: 'icon'
       %li
@@ -96,6 +96,6 @@
         電話番号の確認
         = fa_icon 'angle-right', class: 'icon'
       %li
-      =link_to userlogout_path, data:{turbolinks: "false"}, class: "um-mypage-nav-list-item" do
+      =link_to userlogout_users_path, data:{turbolinks: "false"}, class: "um-mypage-nav-list-item" do
         ログアウト
         = fa_icon 'angle-right', class: 'icon'

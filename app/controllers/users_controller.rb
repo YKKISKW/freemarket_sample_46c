@@ -10,13 +10,6 @@ class UsersController < ApplicationController
     @profile.user = current_user || User.create(sns_sign_up)
     @profile.save!
     redirect_to new_user_session_path
-
-  end
-
-  def top
-  end
-
-  def mypage
   end
 
   def profile
@@ -32,13 +25,6 @@ class UsersController < ApplicationController
   end
 
   def creditregistration
-  end
-
-  def itemsell
-  end
-
-
-  def itemconfirm
   end
 
   def sign_up

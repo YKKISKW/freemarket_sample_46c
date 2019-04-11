@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show,:search]
 
   def index
     @ladies = Item.where(category_id: 1).order("created_at DESC").limit(4)
@@ -52,9 +53,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item_form = ItemForm.new(id:params[:id])
-    @item_form.update(item_params)
-    redirect_to root_path
+    @item_form = ItemForm.new(item_params.merge(id:params[:id]))
+    if @item_form.update
+        redirect_to root_path
+      else
+        @errors = @item_form.errors
+        render :edit
+    end
   end
 
 

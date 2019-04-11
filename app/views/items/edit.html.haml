@@ -124,12 +124,12 @@
                   .is-left
                     販売手数料(10%)
                   .is-right.is-sell-price__li--small#is-commission
-                    = "¥#{(@item_form.price * 0.1).round}"
+                    = "¥#{(@item_form.price.to_i * 0.1).round}" if @item_form.price
                 %li.clearfix.bold.is-sell-price__li
                   .is-left.is-bold
                     販売利益
                   .is-right.is-sell-price__li--large#is-profit
-                    = "¥#{(@item_form.price * 0.9).round}"
+                    = "¥#{(@item_form.price.to_i * 0.9).round}" if @item_form.price
           .is-sell-content
             %p.is-sell-content__p 禁止されている出品、行為を必ずご確認ください。
             %p.is-sell-content__p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。

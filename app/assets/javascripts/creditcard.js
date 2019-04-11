@@ -1,4 +1,5 @@
-$(document).on('turbolinks:load', function() {
+jQuery(document).ready(function($){
+  $(document).ready(function(){
   const PAYJP_PUBLIC_KEY="pk_test_336046173393efb07571501f";
   const TEST_CARD = [
     {
@@ -80,7 +81,8 @@ $(document).on('turbolinks:load', function() {
     });
   }
 
-  $('#submit-button').click(function() {
+  $('#submit-button').click(function(e) {
+    e.preventDefault();
     (async()=> {
       let card_token;
       let card_info = get_card_info(false);
@@ -89,4 +91,5 @@ $(document).on('turbolinks:load', function() {
       $('#credit_form').submit();
     })();
   });
+});
 });

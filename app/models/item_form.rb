@@ -48,26 +48,47 @@ class ItemForm
 
   def save
     return false if invalid?
-    item = Item.new(name: name,description: description,category_id: category_id,brand_id: brand_id,status: status,delivery_fee: delivery_fee,delivery_method: delivery_method,prefecture_id: prefecture_id,delivery_date: delivery_date,price: price,user_id:user_id)
+    item = Item.new(item_params)
     images.each do |i|
       item.images.new(image: i)
       item.save
     end
   end
 
-  def update(params)
-    @item.update(params)
+  def update
+    @item = Item.find(id)
+    self.images = @item.images unless images
+    return false if invalid?
     if remove_images
       remove_images.each do |r|
         @item.images.find(r).destroy
       end
     end
-    if images
+    unless images == @item.images
       images.each do |i|
         @item.images.new(image: i)
         @item.save
       end
     end
+        @item.update(item_params)
+  end
+
+  private
+
+  def item_params
+    {
+      name: name,
+      description: description,
+      category_id: category_id,
+      brand_id: brand_id,
+      status: status,
+      delivery_fee: delivery_fee,
+      delivery_method: delivery_method,
+      prefecture_id: prefecture_id,
+      delivery_date: delivery_date,
+      price: price,
+      user_id:user_id
+    }
   end
 
 

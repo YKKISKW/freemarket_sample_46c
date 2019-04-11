@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load', function(){
-
+jQuery(document).ready(function($){
+  $(document).ready(function(){
 ///////appendImage////////////////////////////////////////////////////////////////
  function appendImage(img,i,imageList) {
    var html = `<li class="is-image-li" id="${i}">
@@ -258,4 +258,5 @@ removeExclude = ""
   }, 500);
    });
 /////////////////////////////////////////////////////////////////////////////////
+});
 });
