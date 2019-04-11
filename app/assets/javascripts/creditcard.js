@@ -1,4 +1,5 @@
-$(document).on('turbolinks:load', function() {
+jQuery(document).ready(function($){
+  $(document).ready(function(){
   const PAYJP_PUBLIC_KEY="pk_test_336046173393efb07571501f";
   const TEST_CARD = [
     {
@@ -90,4 +91,5 @@ $(document).on('turbolinks:load', function() {
       $('#credit_form').submit();
     })();
   });
+});
 });
