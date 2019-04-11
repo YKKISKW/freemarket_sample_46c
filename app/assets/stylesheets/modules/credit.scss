@@ -39,12 +39,15 @@
         width: 49px;
       }
       a {
-        float: right;
         color: red;
         border : solid 1px red;
-        padding: 3px;
+        padding: 3px 7px;
         border-radius: 2px;
-        // display: block;
+      }
+      .um-mypage-nav-list-item {
+        position: relative;
+        top: -48px;
+        left: 250px;
       }
     }
   }
