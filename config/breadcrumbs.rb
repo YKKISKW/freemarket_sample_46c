@@ -28,7 +28,7 @@ crumb :credit do
 end
 
 crumb :creditregistration do
-  link "クレジットカード情報入力",creditregistration_users_path
+  link "クレジットカード情報入力",new_credit_card_path
   parent :credit
 end
 
@@ -58,4 +58,3 @@ crumb :brand do |brand|
   link brand.name, brand_path
   parent :root
 end
-

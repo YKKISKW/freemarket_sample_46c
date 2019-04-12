@@ -15,18 +15,16 @@
           %section.uc-add-card
             .uc-single__content
               - if @card_info
-                -# [@ToDo]ビューの調整必要
+                .ib-content__payment-inner__visa
+                  = get_credit_log(@card_info[:brand])
                 %p.ib-content__payment-inner__info
                   = "************#{@card_info[:last4]}"
                   %br
                   = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
-                .ib-content__payment-inner__visa
-                  = get_credit_log(@card_info[:brand])
-                -# [@ToDo]Myページから遷移時のみ削除ボタンを表示させるようにする
-                =link_to "/credit_card/:id", method: :delete, class: 'um-mypage-nav-list-item' do
+                =link_to @registered_url, method: :delete, class: 'um-mypage-nav-list-item' do
                   削除する
               - else
-                = link_to creditregistration_users_path, data:{turbolinks: "false"}, class: "uc-btn-default uc-btn-red submit_btn" do
+                = link_to @not_registered_url, data:{turbolinks: "false"}, class: "uc-btn-default uc-btn-red submit_btn" do
                   クレジットカードを追加する
                   = fa_icon 'credit-card', class: 'icon'
           .uc-settings

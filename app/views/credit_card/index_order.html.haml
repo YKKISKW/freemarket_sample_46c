@@ -1,0 +1,19 @@
+= render "devise/shared/login-header"
+.order_uc
+  .order_uc-content
+    %h2.order_uc-content__title
+      支払い方法
+    .order_uc-content__detail
+      .inner
+        .inner-info
+          %h3
+            クレジットカード一覧
+          = get_credit_log(@card_info[:brand])
+          %p
+            = "************#{@card_info[:last4]}"
+            %br
+            = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
+        .inner-link
+          =link_to @registered_url do
+            次に進む
+= render "devise/shared/login-footer"

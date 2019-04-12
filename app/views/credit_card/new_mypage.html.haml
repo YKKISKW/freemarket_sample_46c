@@ -1,0 +1,77 @@
+= render 'users/top-header'
+.um-default
+  - breadcrumb :creditregistration
+  = render 'users/bread-crumbs'
+  .um-container
+    .credit-right-content
+      .credit-right-content__wrapper
+        %h2.credit-title クレジットカード情報入力
+      .credit-right-content__wrapper__box
+        = form_with url: @regist_url ,local: true, id:"credit_form", class: "credit-right-content__wrapper__box__form" do |f|
+          .credit-right-content__wrapper__box__form__center
+            .credit-right-content__wrapper__box__form__center__number
+              .h4.number-title カード番号
+              %span.form-require 必須
+            = f.text_field :credit_card_number, class: 'number-form', placeholder: '半角数字のみ'
+
+            %ul.card-all
+              %li
+                = get_credit_log('visa')
+              %li
+                = get_credit_log('mastercard')
+              %li
+                = get_credit_log('saison')
+              %li
+                = get_credit_log('jcb')
+              %li
+                = get_credit_log('american express')
+              %li
+                = get_credit_log('diners club')
+              %li
+                = get_credit_log('discover')
+            .credit-right-content__wrapper__box__form__center__expiration-month
+              .h4.expiration-title 有効期限
+              %span.form-require 必須
+            %select.form-month#credit_month
+              %option{value: "1"} 01
+              %option{value: "2"} 02
+              %option{value: "3"} 03
+              %option{value: "4"} 04
+              %option{value: "5"} 05
+              %option{value: "6"} 06
+              %option{value: "7"} 07
+              %option{value: "8"} 08
+              %option{value: "9"} 09
+              %option{value: "10"} 10
+              %option{value: "11"} 11
+              %option{value: "12"} 12
+            %span 月
+
+            .credit-right-content__wrapper__box__form__center__expiration-year
+            %select.form-month#credit_year
+              %option{value: "19"} 19
+              %option{value: "20"} 20
+              %option{value: "21"} 21
+              %option{value: "22"} 22
+              %option{value: "23"} 23
+              %option{value: "24"} 24
+              %option{value: "25"} 25
+              %option{value: "26"} 26
+              %option{value: "27"} 27
+              %option{value: "28"} 28
+              %option{value: "29"} 29
+            %span 年
+            .credit-right-content__wrapper__box__form__security
+              .credit-right-content__wrapper__box__form__center__number
+                .h4.number-title セキュリティコード
+                %span.form-require 必須
+              = f.text_field :credit_card_security_code, class: 'number-form', placeholder: 'カード背面4桁もしくは3桁の番号'
+            .credit-right-content__wrapper__box__form__caution
+              %span.question ?
+              .credit-question-number カード裏面の番号とは？
+            = f.hidden_field :card_token
+            %button.submit-button#submit-button 追加する
+
+    =render 'devise/shared/side_bar'
+= render 'users/camera-btn'
+= render 'users/top-footer'
